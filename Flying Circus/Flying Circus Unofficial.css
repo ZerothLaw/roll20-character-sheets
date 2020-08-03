@@ -1,0 +1,214 @@
+
+@import url('https://fonts.googleapis.com/css?family=Balthazar|Gloria+Hallelujah|UnifrakturMaguntia&display=swap');
+
+.sheet-characterwrapper {
+	border: 30px solid transparent;
+	padding: 5px 15px;
+	min-height: 500px;
+}
+
+.sheet-ground {
+	
+}
+
+.sheet-invisible {display: none;}
+
+.sheet-ground, 
+.sheet-plane {
+	display: none;
+	font-family: 'Balthazar', serif;
+}
+
+.sheet-title 
+{
+	font-size: 3em;
+	font-family: 'UnifrakturMaguntia';
+}
+
+.sheet-subtitle
+{
+	font-size: 1.5em;
+	font-family: 'UnifrakturMaguntia';
+}
+
+.sheet-biginfo 
+{
+	font-size: 1.5em;
+	flex-grow: 2;
+}
+
+.sheet-bio .sheet-biginfo 
+{
+	border-right: 7px solid transparent;
+}
+
+.sheet-tabstoggle[value="ground"] ~ div.sheet-ground,
+.sheet-tabstoggle[value="plane"] ~ div.sheet-plane {
+	display: block;
+}
+
+.sheet-wild-toggle ~ div.sheet-wild,
+.sheet-stressed-out-toggle ~ div.sheet-stressed-out,
+.sheet-burnt-out-toggle ~ div.sheet-burnt-out  
+{
+	display: none;
+}
+
+.sheet-wild-toggle[value="wild"] ~ div.sheet-wild,
+.sheet-stressed-out-toggle[value="on"] ~ div.sheet-stressed-out, 
+.sheet-burnt-out-toggle[value="on"] ~ div.sheet-burnt-out 
+{
+	display: flex;
+}
+
+/* title card styling */
+
+.sheet-menuwrapper .sheet-title {
+	background-color: rgb(195, 56, 56);
+	padding: 1ex;
+	border-radius: 25%;
+	text-align: center;
+	font-size: 5em;
+}
+
+/* stress styling */
+div.sheet-stressed-out {
+	color: red;
+	font-size: 50%;
+	font-family: 'Balthazar', serif;
+	text-align: middle;
+	margin-left: 1ex;
+}
+
+.sheet-stress.sheet-box {
+	border: 2px solid transparent;
+}
+
+.sheet-flexcol.sheet-box {
+	flex-grow: 0;
+}
+
+div.sheet-burnt-out {
+	color: aqua;
+	font-size: 75%;
+	font-family: 'Balthazar', serif;
+	text-align: middle;
+	margin-left: 1ex;
+}
+
+/* flex table styling */
+.sheet-flexcol {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	flex-grow: 1;
+}
+
+.sheet-flexrow {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.sheet-aligncenter {
+	align-self: center;
+}
+
+/*stats box styling*/
+.sheet-stats .sheet-flexcol {
+	margin-left: 1em;
+	flex-grow: 0;
+}
+.sheet-stats input[type="text"] {
+	width: 2em;
+	font-size: 2em;
+	border-radius: 40%;
+	text-align: center;
+}
+
+.sheet-stats span {
+	font-size: 1.2em;
+	text-align: center;
+}
+
+/*experience styling */
+div.sheet-experience {
+	border-top: 10px solid transparent;
+}
+
+span.sheet-experience {
+	font-size: 1.5em;
+	border-right: 10px solid transparent;
+}
+
+div.sheet-experience input 
+{
+	width: 3em;
+	font-size: 2em;
+	border-radius: 35%;
+	text-align: center;
+	padding-left: 0.5ex;
+}
+
+/* comrades styling */
+.sheet-comrades.sheet-subtitle {
+	margin-right: 3px;
+	padding-right: 5px;
+	border-right: 2px solid;
+}
+
+.sheet-comrade input[type="text"].sheet-comrade-name {
+	width: 50%;
+	padding-left: 1ex;
+	font-size: 1.5em;
+	margin-bottom: 1ex;
+}
+
+.sheet-trust-box {
+	margin-left: 1em;
+}
+
+.sheet-comrade span 
+{
+	margin-right: 3px;
+	padding-right: 5px;
+	border-right: 2px solid;
+}
+
+div.sheet-flexcol.sheet-comrades 
+{
+	border: 1px solid;
+	margin: 2ex;
+	margin-left: 0;
+	padding: 1ex 1ex 1ex 1ex;
+}
+
+.sheet-comrade input[type="checkbox"] {
+	margin-right: 0;
+	padding-right: 0;
+}
+
+/* vice styling */
+
+div.sheet-flexcol.sheet-vices {
+	border: 1px solid;
+	margin: 2ex;
+	padding: 1ex;
+	flex-shrink: 0;
+}
+
+.sheet-vice input[type="text"].sheet-vice-name {
+	width: 100%;
+	padding-left: 1ex;
+	font-size: 1.5em;
+	margin-bottom: 1ex;
+}
+
+/* plane stuff */
+
+.sheet-small-digit {
+	font-size: 0.2ex;
+}
+
+/*air-stats indicator */
+
+

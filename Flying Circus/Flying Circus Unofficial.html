@@ -1,0 +1,501 @@
+<div class="characterwrapper">
+	<div class="menuwrapper">
+
+		<div class="title" data-i18n="flying-circus">Flying Circus</div>
+		<div class="tab-toggles">
+			<button type="action" name="act_Ground" checked="checked" data-i18n-placeholder="ground">Ground</button>
+			<button type="action" name="act_Plane" checked="checked" data-i18n-placeholder="plane">Plane</button>
+		</div>
+
+	</div>
+	<input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab' value='ground' />
+	<input type='hidden' class='sheet-toggles' name='attr_toggles' value='none' />
+
+	<!-----------Ground---------->
+	<div class="ground">
+		<div class="flexcol bio">
+			<div class="biginfo"><span data-i18n="character-identifier">Character Name/Identity:</span> <input type="text" name="attr_character-identifier" /> </div>
+			<div class="biginfo">
+				<span data-i18n="character-playbook">Playbook:</span> 
+				<select name="attr_playbook"> 
+					<option value="">-</option>
+					<option value="Believer" data-i18n="believer">Believer</option>
+					<option value="Farmer"   data-i18n="farmer"  >Farmer</option>
+					<option value="Fisher"   data-i18n="fisher"  >Fisher</option>
+					<option value="Scion"    data-i18n="scion"   >Scion</option>
+					<option value="Skyborn"  data-i18n="skyborn" >Skyborn</option>
+					<option value="Soldier"  data-i18n="soldier" >Soldier</option>
+					<option value="Student"  data-i18n="student" >Student</option>
+					<option value="Survivor" data-i18n="survivor">Survivor</option>
+					<option value="Witch"    data-i18n="witch"   >Witch</option>
+					<option value="Worker"   data-i18n="worker"  >Worker</option>
+				</select>
+			</div>
+			<div class="biginfo"><span data-i18n="character-origin">Origin:</span> <input type="text" name="attr_character-origin" /> </div>
+			<div class="biginfo"><span data-i18n="character-people">People:</span> <input type="text" name="attr_character-people" /> </div>	
+			<div class="flexrow stats">
+				<div class="flexcol hard"><input type="text" name="attr_character-hard" /><span data-i18n="hard">Hard</span></div>
+				<div class="flexcol keen"><input type="text" name="attr_character-keen" /><span data-i18n="keen">Keen</span></div>
+				<div class="flexcol calm"><input type="text" name="attr_character-calm" /><span data-i18n="calm">Calm</span></div>
+				<div class="flexcol daring"><input type="text" name="attr_character-daring" /><span data-i18n="daring">Daring</span></div>
+				<input type="hidden" class='wild-toggle' name='attr_wild-toggle' value='none'/>
+				<div class="flexcol wild"><input type="text" name="attr_character-wild" /><span data-i18n="wild">Wild</span></div>
+			</div>
+		</div>
+		<div class="flexrow bio2">
+			<div class="biginfo"><span data-i18n="character-expectations">Expectations:</span> <textarea name="attr_character-expectations" > </textarea></div>
+			<div class="biginfo"><span data-i18n="character-history">History:</span> <textarea name="attr_character-history" /> </textarea></div>
+		</div>
+		<div class="flexcol stress">
+			<div class="flexrow stress title">
+				<span data-i18n="stress">Stress:</span>
+				<!-- stressed out indicator -->
+				<input type="hidden" class='stressed-out-toggle' name='attr_stressed-out-toggle' value='none' />
+				<div class="stressed-out aligncenter"><span data-i18n="stressed-out">STRESSED OUT</span></div>
+				<!-- burnt out indicator -->
+				<input type="hidden" class='burnt-out-toggle' name='attr_burnt-out-toggle' value='none' />
+				<div class="burnt-out aligncenter"><span data-i18n="burnt-out">BURNT OUT</span></div>
+			</div>
+			<div class="flexrow">
+				<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress1" /></div>
+				<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress2" /></div>
+				<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress3" /></div>
+				<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress4" /></div>
+				<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress5" /></div>
+				<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress6" /></div>
+				<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress7" /></div>
+				<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress8" /></div>
+				<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress9" /></div>
+				<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stressA" /></div>
+			</div>
+			
+		</div>
+		
+		<div class="flexrow experience">
+			<span class ="title experience" data-i18n="experience">Experience:</span> <input type="text" name="attr_experience" />
+		</div>
+		
+		<div class="flexrow comrades-and-vices">
+			<div class="flexcol smaller comrades">
+				<div class="flexrow">
+					<span class="comrades subtitle flexcol" data-i18n="comrades">Comrades</span> 
+					<span class="trust subtitle flexcol" data-i18n="trust-q">Trust?</span>
+				</div>
+				<fieldset class="repeating_comrades">
+					<div class="comrade">
+						<span><input type="text" class="comrade-name" name="attr_comrade-title" placeholder="Comrade Name" /></span>
+						<input type="checkbox" class="trust-box" checked="false" name="attr_comrade-trust"/>
+					</div>
+				</fieldset>
+			</div>
+			<div class="flexcol smaller vices">
+				<span class="vices subtitle" data-i18n="vices">Familiar Vices</span>
+				<fieldset class="repeating_vices">
+					<div class="vice">
+						<input type="text" class="vice-name" name="attr_vice-title" placeholder="Vice" />
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		<div class="flexrow assets baggage">
+			<div class="flexcol assets">
+				<div class="assets subtitle"><span data-i18n="assets">Assets</span></div>
+				<label class="label asset"><input type="text" class="asset name_1" name="attr_asset-1"> </label>
+				<label class="label asset"><input type="text" class="asset name_2" name="attr_asset-2"> </label>
+				<label class="label asset"><input type="text" class="asset name_3" name="attr_asset-3"> </label>
+			</div>
+		
+			<div class="flexcol baggage">
+				<div class="baggage subtitle"><span data-i18n="baggage">Baggage</span></div>
+				<label class="label baggage"><input type="text" class="asset name_1" name="attr_asset-1"> </label>
+				<label class="label baggage"><input type="text" class="asset name_2" name="attr_asset-2"> </label>
+				<label class="label baggage"><input type="text" class="asset name_3" name="attr_asset-3"> </label>
+			</div>
+		</div>
+		<div class="flexcol moves">
+			<div class="subtitle" data-i18n="moves">Moves</div>
+			<div>
+				<fieldset class="repeating_skills moves">
+					<div class="moves">
+						<input type="text" class="move-title" name="attr_move-title" placeholder="Move Name" />
+						<textarea class="move-info" name="attr_move-info" placeholder="Description"> </textarea>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		<div class="flexcol mastery">
+			<div class="mastery subtitle"><span data-i18n="mastery">Mastery</span></div>
+			<div class="mastery moves"><textarea name="attr_mastery-moves"> </textarea> </div>
+			<div class="flexrow">
+				<span class="mastery box"><input type="checkbox" name="attr_chk-mastery1" /></span>
+				<span class="mastery box"><input type="checkbox" name="attr_chk-mastery2" /></span>
+				<span class="mastery box"><input type="checkbox" name="attr_chk-mastery3" /></span>
+				<span class="mastery box"><input type="checkbox" name="attr_chk-mastery4" /></span>
+				<span class="mastery box"><input type="checkbox" name="attr_chk-mastery5" /></span>
+			</div>
+		</div>
+	</div>
+	<div class="plane flexrow">
+		<div class="flexcol left-side">
+			<div class="altitude indicator">
+				<div>
+					<span> Altitude Thousands</span>
+					<select name="attr_altitude-thousands"> 
+						<option value="0"><span class="big-digit">0</span><span class="small-digit">000</span></option>
+						<option value="1"><span class="big-digit">1</span><span class="small-digit">000</span></option>
+						<option value="2"><span class="big-digit">2</span><span class="small-digit">000</span></option>
+						<option value="3"><span class="big-digit">3</span><span class="small-digit">000</span></option>
+						<option value="4"><span class="big-digit">4</span><span class="small-digit">000</span></option>
+						<option value="5"><span class="big-digit">5</span><span class="small-digit">000</span></option>
+						<option value="6"><span class="big-digit">6</span><span class="small-digit">000</span></option>
+						<option value="7"><span class="big-digit">7</span><span class="small-digit">000</span></option>
+						<option value="8"><span class="big-digit">8</span><span class="small-digit">000</span></option>
+						<option value="9"><span class="big-digit">9</span><span class="small-digit">000</span></option>
+					</select>
+				</div>
+				<div>
+					<span>Altitude Hundreds</span>
+					<select name="attr_altitude-hundreds"> 
+						<option value="0"><span class="big-digit">0</span><span class="small-digit">00</span></option>
+						<option value="1"><span class="big-digit">1</span><span class="small-digit">00</span></option>
+						<option value="2"><span class="big-digit">2</span><span class="small-digit">00</span></option>
+						<option value="3"><span class="big-digit">3</span><span class="small-digit">00</span></option>
+						<option value="4"><span class="big-digit">4</span><span class="small-digit">00</span></option>
+						<option value="5"><span class="big-digit">5</span><span class="small-digit">00</span></option>
+						<option value="6"><span class="big-digit">6</span><span class="small-digit">00</span></option>
+						<option value="7"><span class="big-digit">7</span><span class="small-digit">00</span></option>
+						<option value="8"><span class="big-digit">8</span><span class="small-digit">00</span></option>
+						<option value="9"><span class="big-digit">9</span><span class="small-digit">00</span></option>
+					</select>
+				</div>
+				
+				<div class="plate">Altitude</div>
+			</div>
+			<div class="plane-stats">
+				<div class="air-stats indicator">
+					<div class="visibility">
+						<div class="label">Visibility</div>
+						<div class="input"><input type="text" name="attr_visibility" /> </div>
+					</div>
+					<div class="energy-loss">
+						<div class="label">Energy Loss</div>
+						<div class="input"><input type="text" name="attr_energy-loss" /> </div>
+					</div>
+					<div class="turn-bleed">
+						<div class="label">Turn Bleed</div>
+						<div class="input"><input type="text" name="attr_turn-bleed" /> </div>
+					</div>
+					<div class="stability">
+						<div class="label">Stability</div>
+						<div class="input"><input type="text" name="attr_stability" /> </div>
+					</div>
+				</div>
+				<div class="escape square-box">
+					<input type="text" name="attr_escape" />
+					<div class="label">Escape</div>
+				</div>
+				<div class="crash square-box">
+					<input type="text" name="attr_crash" />
+					<div class="label">Crash</div>
+				</div>
+			</div>
+			<div class="flexrow">
+				<div class="plane-stress square-box">
+					<input type="text" name="attr_plane-stress" />
+					<div class="label">Stress</div>
+				</div>
+				<div class="plane-health indicator flexcol">
+					<div class="toughness flexrow">
+						<div class="current-toughness">
+							<input type="text" name="attr_current-toughness" />
+						</div>
+						<div class="max-toughness">
+							<input type="text" name="attr_max-toughness" />
+						</div>
+					</div>
+					<span>Toughness</span>
+					<div class="max-strain">
+						<div class="current-strain">
+							<input type="text" name="attr_current-strain" />
+						</div>
+						<div class="max-strain">
+							<input type="text" name="attr_max-strain" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="flexcol middle">
+			<div class="flexrow variable-stats">
+				<div class="flexcol">
+					<div class "flexcol header spacer">
+					</div>
+					<div class "flexcol">
+						Full Load
+					</div>
+					<div class "flexcol">
+						Half Fuel Bombs
+					</div>
+					<div class "flexcol">
+						Full Fuel No Bombs
+					</div>
+					<div class "flexcol">
+						Half Fuel No Bombs
+					</div>
+					<div class "flexcol">
+						Empty
+					</div>
+				</div>
+				<div class="flexcol">
+					<div class "flexcol">
+						Boost
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_full-load-boost" />
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_half-fuel-bombs-boost" />
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_full-fuel-no-bombs-boost" />
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_half-fuel-no-bombs-boost" />
+					</div>
+					<div class "flexcol">
+						-
+					</div>
+				</div>
+				<div class="flexcol">
+					
+					<div class "flexcol">
+						Handling
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_full-load-handling" />
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_half-fuel-bombs-handling" />
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_full-fuel-no-bombs-handling" />
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_half-fuel-no-bombs-handling" />
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_empty-handling" />
+					</div>
+					
+				</div>
+				<div class="flexcol">
+					<div class "flexcol">
+						Stall
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_full-load-stall" />
+					</div>
+					
+					<div class "flexcol">
+						<input type="text" name="attr_full-fuel-no-bombs-stall" />
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_half-fuel-bombs-stall" />
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_half-fuel-no-bombs-stall" />
+					</div>
+					<div class "flexcol">
+						<input type="text" name="attr_empty-stall" />
+					</div>
+				</div>
+			
+			
+			</div>
+			<div class="plate">Variable Stats</div>
+			<div class="fuel square-box">
+				<input type="text" name="attr_fuel" />
+				<span>Fuel</span>
+			</div>
+			<div class="flexcol ordinance">
+				<div class="header"> Ordinance </div>
+				<div class="ordinance-line"><input type="text" name="attr_ord1"/></div>
+				<div class="ordinance-line"><input type="text" name="attr_ord2"/></div>
+				<div class="ordinance-line"><input type="text" name="attr_ord3"/></div>
+				<div class="ordinance-line"><input type="text" name="attr_ord4"/></div>
+				<div class="ordinance-line"><input type="text" name="attr_ord5"/></div>
+			</div>
+			<div class="inventory">
+				<div class="flexrow header">
+					<div class="flexcol">Vital Parts</div>
+					<div class="flexcol">Armour</div>
+				</div>
+				<div class="flexrow">
+					<div class="flexcol">
+						<input type="text" name="attr_vp1" />
+					</div>
+					<div class="flexcol">
+						<input type="text" name="attr_arm1" />
+					</div>
+				</div>
+				<div class="flexrow">
+					<div class="flexcol">
+						<input type="text" name="attr_vp2" />
+					</div>
+					<div class="flexcol">
+						<input type="text" name="attr_arm2" />
+					</div>
+				</div>
+				<div class="flexrow">
+					<div class="flexcol">
+						<input type="text" name="attr_vp3" />
+					</div>
+					<div class="flexcol">
+						<input type="text" name="attr_arm3" />
+					</div>
+				</div>
+				<div class="flexrow">
+					<div class="flexcol">
+						<input type="text" name="attr_vp4" />
+					</div>
+					<div class="flexcol">
+						<input type="text" name="attr_arm4" />
+					</div>
+				</div>
+				<div class="flexrow">
+					<div class="flexcol">
+						<input type="text" name="attr_vp5" />
+					</div>
+					<div class="flexcol">
+						<input type="text" name="attr_arm5" />
+					</div>
+				</div>
+				<div class="flexrow">
+					<div class="flexcol">
+						<input type="text" name="attr_vp6" />
+					</div>
+					<div class="flexcol">
+						<input type="text" name="attr_arm6" />
+					</div>
+				</div>
+				<div class="flexrow">
+					<div class="flexcol">
+						<input type="text" name="attr_vp7" />
+					</div>
+					<div class="flexcol">
+						<input type="text" name="attr_arm7" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="flexcol right-side">
+			<div class="air-speed indicator">
+				<select name="attr_air-speed-tens"> 
+					<option value="0"><span class="big-digit">0</span><span class="small-digit">0</span></option>
+					<option value="1"><span class="big-digit">1</span><span class="small-digit">0</span></option>
+					<option value="2"><span class="big-digit">2</span><span class="small-digit">0</span></option>
+					<option value="3"><span class="big-digit">3</span><span class="small-digit">0</span></option>
+					<option value="4"><span class="big-digit">4</span><span class="small-digit">0</span></option>
+					<option value="5"><span class="big-digit">5</span><span class="small-digit">0</span></option>
+					<option value="6"><span class="big-digit">6</span><span class="small-digit">0</span></option>
+					<option value="7"><span class="big-digit">7</span><span class="small-digit">0</span></option>
+					<option value="8"><span class="big-digit">8</span><span class="small-digit">0</span></option>
+					<option value="9"><span class="big-digit">9</span><span class="small-digit">0</span></option>
+				</select>
+				<select name="attr_air-speed-hundreds"> 
+					<option value="0"><span class="big-digit">0</span><span class="small-digit">00</span></option>
+					<option value="1"><span class="big-digit">1</span><span class="small-digit">00</span></option>
+					<option value="2"><span class="big-digit">2</span><span class="small-digit">00</span></option>
+					<option value="3"><span class="big-digit">3</span><span class="small-digit">00</span></option>
+					<option value="4"><span class="big-digit">4</span><span class="small-digit">00</span></option>
+					<option value="5"><span class="big-digit">5</span><span class="small-digit">00</span></option>
+					<option value="6"><span class="big-digit">6</span><span class="small-digit">00</span></option>
+					<option value="7"><span class="big-digit">7</span><span class="small-digit">00</span></option>
+					<option value="8"><span class="big-digit">8</span><span class="small-digit">00</span></option>
+					<option value="9"><span class="big-digit">9</span><span class="small-digit">00</span></option>
+				</select>
+				<div class="plate">Air Speed</div>
+			</div>
+			<div class="g-force indicator">
+				<select class="g-force" name="attr_g-force">
+					<option value="10">10</option>
+					<option value="9">9</option>
+					<option value="8">8</option>
+					<option value="7">7</option>
+					<option value="6">6</option>
+					<option value="5">5</option>
+					<option value="4">4</option>
+					<option value="3">3</option>
+					<option value="2">2</option>
+					<option value="1">1</option>
+					<option value="0">0</option>
+				</select>
+				<div class="label">G-Force</div>
+			</div>
+			<div class="air-speed-stats square-box">
+				<input type="text" name="attr_max-speed" />
+				<span>Max Speed</span>
+				<input type="text" name="attr_dropoff" />
+				<span>Dropoff</span>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<script type="text/worker">
+	const attribs = ['hard', 'keen', 'calm', 'daring', 'wild'];
+	
+	on("change:playbook", function(e) {
+		updatePlaybook(e);
+	});
+	
+	on("change:chk-stress5 change:chk-stressA", function(e) {
+		if (e.sourceAttribute === "chk-stressa")
+		{
+			if (e.newValue === "on")
+			{
+				setAttrs({"burnt-out-toggle": 'on'});
+			}
+			else 
+			{
+				setAttrs({"burnt-out-toggle":'none'});
+			}
+		}
+		else 
+		{
+			if (e.newValue === "on")
+			{
+				setAttrs({"stressed-out-toggle": 'on'});
+			}
+			else 
+			{
+				setAttrs({"stressed-out-toggle":'none'});
+			}
+		}
+	});
+	
+	const buttonlist = ["ground","plane"];
+    buttonlist.forEach(button => {
+        on(`clicked:${button}`, function() {
+            setAttrs({
+                sheetTab: button
+            });
+        });
+    });
+	
+	//==== functions
+	
+	var updatePlaybook = function(e)
+	{
+		if (e.newValue === "Witch")
+		{
+			setAttrs({'wild-toggle': 'wild'});
+		}
+		else 
+		{
+			setAttrs({'wild-toggle':'none'});
+		}
+		//setAttrs({ "playbook":  
+	}
+</script>
