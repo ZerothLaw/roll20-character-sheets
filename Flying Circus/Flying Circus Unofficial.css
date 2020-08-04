@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css?family=Balthazar|Gloria+Hallelujah|UnifrakturMaguntia&display=swap');
 
 .sheet-characterwrapper {
@@ -42,6 +41,27 @@
 	border-right: 7px solid transparent;
 }
 
+.sheet-small-title {
+	font-size: 2em;
+	font-family: 'UnifrakturMaguntia';
+}
+
+.sheet-horiz-line {
+	width: 100%;
+	border-bottom: 2px solid;
+	border-radius: 15%;
+}
+.sheet-horiz-line2 {
+	width: 100%;
+	border-top: 2px solid;
+	border-radius: 15%;
+	margin-top: 2ex; 
+}
+
+.sheet-horiz-line ~ .sheet-tab-toggles {
+	padding-top: 2ex;
+}
+
 .sheet-tabstoggle[value="ground"] ~ div.sheet-ground,
 .sheet-tabstoggle[value="plane"] ~ div.sheet-plane {
 	display: block;
@@ -49,14 +69,14 @@
 
 .sheet-wild-toggle ~ div.sheet-wild,
 .sheet-stressed-out-toggle ~ div.sheet-stressed-out,
-.sheet-burnt-out-toggle ~ div.sheet-burnt-out  
+.sheet-burnt-out-toggle ~ div.sheet-burnt-out
 {
 	display: none;
 }
 
 .sheet-wild-toggle[value="wild"] ~ div.sheet-wild,
 .sheet-stressed-out-toggle[value="on"] ~ div.sheet-stressed-out, 
-.sheet-burnt-out-toggle[value="on"] ~ div.sheet-burnt-out 
+.sheet-burnt-out-toggle[value="on"] ~ div.sheet-burnt-out
 {
 	display: flex;
 }
@@ -69,6 +89,14 @@
 	border-radius: 25%;
 	text-align: center;
 	font-size: 5em;
+	border-bottom: 2px solid;
+	border-top: 2px solid;
+}
+
+/* engine-cards styling */
+
+.sheet-engine-card {
+	
 }
 
 /* stress styling */
@@ -94,6 +122,12 @@ div.sheet-burnt-out {
 	font-family: 'Balthazar', serif;
 	text-align: middle;
 	margin-left: 1ex;
+}
+
+
+div.sheet-flexrow.sheet-experience {
+	align-self: flex-start;
+	flex-grow: 0;
 }
 
 /* flex table styling */
@@ -209,6 +243,33 @@ div.sheet-flexcol.sheet-vices {
 	font-size: 0.2ex;
 }
 
+.sheet-spacer.sheet-header {
+	width: 3em;
+	height: 1em;
+}
+
+.sheet-flexrow .sheet-plane-stress {
+	flex-grow: 0;
+	padding-right: 2ex;
+}
+
+.sheet-flexrow .sheet-plane-stress input[type="text"] {
+	width: 2em;
+	font-size: 1.5 em;
+	padding-left: 1ex;
+}
+
 /*air-stats indicator */
+
+/*roll templates*/
+.sheet-rolltemplate-contact div.sheet-template-container {
+	border: 1px solid;
+	padding: 1ex 0ex 1ex 1ex;
+}
+
+.sheet-rolltemplate-contact div.sheet-template-header {
+	border-bottom: 1px solid red;
+	margin: 0ex 1ex 1ex 0ex;
+}
 
 
