@@ -305,6 +305,22 @@ div.sheet-flexcol.sheet-vices {
 	padding-right: 1ex;
 }
 
+/* square box styling */
+.sheet-square-box {
+	background-image: url('https://github.com/ZerothLaw/roll20-character-sheets/raw/flying-circus/Flying%20Circus/images/square-plate.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+div.sheet-escape.sheet-square-box {
+
+}
+
+.sheet-escape.sheet-square-box input[type="text"] {
+	width: 2em;
+	margin: 0 auto;
+}
+
 /*air-stats indicator */
 .sheet-variable-stats .sheet-flexcol div {
 	border-right: 0px;
