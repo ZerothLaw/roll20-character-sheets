@@ -6,10 +6,6 @@
 	min-height: 500px;
 }
 
-.sheet-ground {
-	
-}
-
 .sheet-invisible {display: none;}
 
 .sheet-ground, 
@@ -237,6 +233,8 @@ div.sheet-flexcol.sheet-vices {
 	margin-bottom: 1ex;
 }
 
+/* engine card */
+
 /* plane stuff */
 
 .sheet-small-digit {
@@ -259,17 +257,132 @@ div.sheet-flexcol.sheet-vices {
 	padding-left: 1ex;
 }
 
+/* moves */
+.sheet-game-moves-container .sheet-game-moves-container {
+	display: none;
+}
+
+.sheet-game-moves-container input.sheet-move-toggle[value="on"] ~ .sheet-game-moves-container {
+	display: inherit;
+}
+
+.sheet-game-moves button[type="roll"] {
+	background-image: none;
+	background-color: transparent;
+	background-repeat: none;
+	border:none; 
+	padding: 0;
+	cursor: pointer;
+	text-shadow: none;
+	font-family: 'Balthazar', serif;
+}
+
+.sheet-game-moves button[type="roll"]:before {
+	content: none;
+}
+
+.sheet-move-title {
+	border-bottom: 1px dashed darkgray;
+	border-radius: 25%;
+	
+	font-family: 'Balthazar', serif;
+	font-size: 1.1em;
+	font-weight: bold;
+	
+	margin-bottom: 1ex;
+	
+	padding-bottom: 0.5ex;
+	
+	text-align: center;
+}
+
+.sheet-game-moves ul {
+	list-style-type: circle;
+}
+
+.sheet-game-moves li {
+	border-right: 1px dashed darkgray;
+	padding-right: 1ex;
+}
+
 /*air-stats indicator */
+.sheet-variable-stats .sheet-flexcol div {
+	border-right: 0px;
+}
+.sheet-variable-stats .sheet-labels div {
+	border: 1px solid black;
+	border-radius: 15%;
+	height: 1em;
+	padding: 1ex;
+	margin-right: 1ex;
+}
+
+.sheet-variable-stats .sheet-labels div.sheet-spacer {
+	border: 0px solid transparent;
+	margin: 0 auto;
+}
+
+.sheet-variable-stats input[type="text"] {
+	width: 3em;
+	text-align: center;
+	margin: 0 auto;
+	border: 0px solid transparent;
+}
+
+.sheet-variable-stats .sheet-labels .sheet-empty {
+	border-bottom: 1px solid;
+}
+
+.sheet-variable-stats .sheet-flexcol {
+	flex-grow: 0;
+}
+
+
+
+.sheet-variable-stats .sheet-flexcol .sheet-header {
+	border-bottom: 2px solid;
+	padding-left: 2ex;
+	padding-right: 2ex;
+}
+.sheet-variable-stats .sheet-flexcol {
+	border-right: 1px solid gray;
+}
+.sheet-variable-stats .sheet-flexcol.sheet-labels, 
+.sheet-variable-stats .sheet-flexcol.sheet-stall {
+	border-right: 0px;
+}
+
+
 
 /*roll templates*/
-.sheet-rolltemplate-contact div.sheet-template-container {
+.sheet-rolltemplate-contact div.sheet-template-container,
+.sheet-rolltemplate-simple-roll div.sheet-template-container, 
+.sheet-rolltemplate-collision  div.sheet-template-container{
+	border: 1px solid;
+	padding: 1ex 1ex 1ex 1ex;
+}
+
+.sheet-rolltemplate-contact div.sheet-template-header,
+.sheet-rolltemplate-simple-roll div.sheet-template-header,
+.sheet-rolltemplate-collision  div.sheet-template-header {
+	border-bottom: 1px solid red;
+	margin: 0ex 1ex 1ex 0ex;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.sheet-rolltemplate-do2d10 div.sheet-template-container {
 	border: 1px solid;
 	padding: 1ex 0ex 1ex 1ex;
 }
 
-.sheet-rolltemplate-contact div.sheet-template-header {
+.sheet-rolltemplate-do2d10 div.sheet-template-header {
 	border-bottom: 1px solid red;
 	margin: 0ex 1ex 1ex 0ex;
 }
 
-
+.sheet-rolltemplate-do2d10 div.sheet-template-options {
+	border-top: 1px dashed darkgray;
+	padding-top: 1ex;
+	margin-top: 1ex;
+}

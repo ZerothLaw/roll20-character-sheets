@@ -37,14 +37,6 @@
 			<div class="flexrow experience">
 				<span class ="small-title experience" data-i18n="experience">Experience:</span> <input type="text" name="attr_experience" />
 			</div>
-			<div class="game-moves">
-				<ul>
-					<li><button type="roll" value="&{template:contact}">Contact</button></li>
-					<li><button type="roll" value="&{template:do2d10} {{rollname=Air Patrol}}{{result=[[2d10+@{character-calm}]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}}" >Air Patrol</button></li>
-					<li><button type="roll" value="&{template:do2d10} {{rollname=Engage}}{{result=[[2d10]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}}" >Engage</button></li>
-					<li><button type="roll" value="[[ 1 + @{RPM}]] &{character:RPM}" >+1 RPM</button></li>
-				</ul>
-			</div>
 		</div>
 		<div class="horiz-line">&nbsp;</div>
 		<div class="tab-toggles">
@@ -52,6 +44,213 @@
 			<button type="action" name="act_Plane" checked="checked" data-i18n-placeholder="plane">Plane</button>
 		</div>
 		
+	</div>
+	
+	<div class="game-moves-container flexrow">
+		<div class="moves-toggle">
+			<span data-i18n="toggle-move-display">Toggle Move Display:</span> <input type="checkbox" class="check-toggle" name="attr_chk-moves-toggle" checked="checked" />
+		</div>
+		<input type="hidden" class="move-toggle" name="attr_game-moves-toggle" value="0" />
+		<div class="game-moves-container">
+			<div class="flexrow">
+				<div class="flexcol universal game-moves">
+					<span data-i18n="universal" class="move-title">Universal</span>
+					<ul>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Press Your Luck}} {{rollbody= *When you take a risk, **you do it**, and consequences unfold.*}}">Press your Luck</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Break Trust}} {{rollbody=*When you lose trust in a comrade*, erase their mark and choose one.
+							*    Keep your feelings hidden, and **take 1 stress**
+							*    Show directly and explicitly how you feel, and **remove 1 stress** }}">Break Trust</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Restore Trust}} {{rollbody=*When you show faith in a comrade*, mark Trust and take 1 Stress.}}">Restore Trust</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Help/Hinder}} {{rollbody=*When you put yourself at risk to help a comrade*, give them Advantage forward. If you didn't trust them, Restore Trust.
+							
+							*When you make a point to hinder a comrade*, give them Disadvantage forward. If you trusted them, Break Trust.}}">Help/Hinder</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Discover Beauty}} {{rollbody=*Once per routine, when you witness beauty in the world*, describe how you are moved by what you see, and lose 1 Stress.}}">Discover Beauty</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Intimacy}} {{rollbody=*When you share a moment of emoional (and possibly physical) intimacy with one or more characters*, all PCs activate their Intimacy Move.}}">Intimacy</button>
+						</li>
+					</ul>
+				</div>
+				<div class="flexcol preflight game-moves">
+					<span data-i18n="preflight" class="move-title">Preflight</span>
+					<ul>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Contact}} {{rollbody=*When you take off*, the GM yells 'Contact!' Respond 'Switch On!', mark 1 RPM on all engines, set cruising Altitude, and set Speed to the lowest Max in the squadron. Make engine noises as appropriate.}}">Contact</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:do2d10} {{rollname=Air Patrol}} {{holds=[[?{Number of times doing Air Patrol?|0}]]}} {{resadv=[[3d10kh2+@{character-calm}]]}} {{resdis=[[3d10kl2+@{character-calm}]]}} {{resnorm=[[2d10+@{character-calm}]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{successtext= You find what you were looking for.}} {{costlysuccesstext=You find something else.}} {{failuretext=Something finds you and Engage is rolled at Disadvantage or push Fuel Check and roll again.}}" >
+								Air Patrol
+							</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:do2d10} {{rollname=Long Haul}} {{resadv=[[3d10kh2]]}} {{resnorm=[[2d10]]}} {{resdis=[[3d10kl2]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{success=[[15]]}} {{successtext=The rest of your journey is uneventful.}} {{costlysuccess=[[11]]}} {{costlysuccesstext=You face potential problems from your machine, a passing plane, or the ground. Once resolved, roll again.}} {{failuretext=}}">
+								Long Haul
+							</button>
+						</li>
+					</ul>
+				</div>
+				<div class="flexcol air-combat game-moves">
+					<span data-i18n="air-combat" class="move-title">Air Combat</span>
+					<ul>
+						<li>
+							<button type="roll" value="&{template:do2d10} {{rollname=Engage}}{{resadv=[[3d10kh2]]}} {{resnorm=[[2d10]]}} {{resdis=[[3d10kl2]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{holds=[[?{Engage bonuses?|0}]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{options=On a 16+ choose 2. On a success at a cost, choose 1. Then the enemy chooses one.*When you join a fight or ambush*, just pick 1. 
+						
+						*   Start with altitude Advantage.
+						*   Spot the enemy and act while they are unaware.
+						*   Catch the enemy spread out.
+						*   Come in behind your foe.}}" >Engage</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:do2d10} {{rollname=Stay on Target}}{{resadv=[[3d10kh2 +@{character-calm}]]}} {{resnorm=[[2d10+@{character-calm}]]}} {{resdis=[[3d10kl2+@{character-calm}]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{costlysuccesstext=On a hit, you make it to the target, and only then face consequences.}} {{successtext=Choose 1: take Advantage forward, or soften the consequences.}}">Stay on Target</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:do2d10} {{rollname=Evade Danger}}{{resadv=[[3d10kh2 + (@{character-keen})]]}} {{resnorm=[[2d10 + (@{character-keen})]]}} {{resdis=[[3d10kl2 + (@{character-keen})]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{costlysuccesstext=Choose 1.}} {{successtext=You evade danger.}} {{failuretext=Take all three.}} {{options=
+							 *    You are left vulnerable as you recover your nerves.
+							 *    Take [[1d10 * (@{air-speed-hundreds})]] Structure damage.
+							 *    Go into a spin.}}">Evade Danger</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Overwatch}} {{rollbody=*When you watch over a friend*, hold one. Spend your hold to...
+							 *    Help or Hinder one of their Moves
+							 *    Place yourself between them and a pursuer.
+							 *    Drop on the tail of their pursuer, no roll required.}}">Overwatch</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Chase!}} {{rollbody=*When there's a straight line chase or race*, **compare speeds**.
+							    * *If you're at equal speed*, nothing changes.
+								* *If the pursuer is faster*, move one range band closer.
+								* *If the defender is faster*, move one range band farther away.
+								
+								A difference in speed of 10 or more means the chase immediately ends: the pursuer gets as close as they want, or the defender gets out of range.
+								
+								*If a plane is forced to turn*, they count as slower regardless of speed.}}">Chase!</button>
+						</li>
+						<li>
+							<button type="roll">Dogfight - Pursue Them, Make an Attack</button>
+						</li>
+						<li>
+							<button type="roll">Dogfight - Escape a Bad Spot, Bait Them, Defend</button>
+						</li>
+						<li>
+							<button type="roll">Dogfight - Turn the Tables on Your Pursuer</button>
+						</li>
+					</ul>
+				</div>
+				<div class="flexcol support game-moves">
+					<span data-i18n="support" class="move-title">Support</span>
+					<ul>
+						<li>
+							<button type="roll" value="&{template:do2d10} {{rollname=Eyeball}} {{resadv=[[3d10kh2 +(@{character-keen}) + (@{visibility})]]}} {{resnorm=[[2d10+(@{character-keen}) + (@{visibility})]]}} {{resdis=[[3d10kl2+(@{character-keen}) + (@{visibility})]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{costlysuccesstext=The GM gives you an answer, and you take Advantage forward to react.}} {{successtext=The GM gives you an answer, and you take Advantage forward to react. The answer puts you in a position of strength.}} {{failuretext=The GM gives you an answer, and you take Advantage forward to react. The answer is one you don't want to hear.}}">Eyeball</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:do2d10} {{rollname=Empty Seat}} {{resadv=[[3d10kh2 + (@{stability})]]}} {{resnorm=[[2d10 + (@{stability})]]}} {{resdis=[[3d10kl2 + (@{stability})]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{costlysuccesstext=The plane starts listing, turning, or diving.}} {{successtext=It ploughs on for awhile.}} {{failuretext=???}}">Empty Seat</button>
+						</li>
+						<li>
+							<button type="roll">Wingwalk</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:do2d10} {{rollname=Patch Fix}} {{resadv=[[3d10kh2 + (@{character-keen}) ]] }} {{resnorm=[[2d10 + (@{character-keen}) ]] }} {{resdis=[[3d10kl2 + (@{character-keen}) ]] }} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{costlysuccesstext=Choose 1.}} {{successtext=Choose 2.}} {{failuretext=Choose none.}} {{options=
+							 *    Negate 1 Wear. (Can choose more than once.)
+							 *    Put out a fire.
+							 *    Patch and refill a damaged radiator.
+							 *    Restart an engine.}}">Patch Fix</button>
+						</li>
+					</ul>
+				</div>
+				<div class="flexcol manoevers game-moves">
+					<span data-i18n="manoevers" class="move-title">Manoevers</span>
+					<ul>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Extend}} {{rollbody=*When you fly straight to regain speed*, increase your speed up to Max Speed, add +1 RPM, reduce your G-Force tracker to 0, and...
+							
+							 *    If you are clear of immediate danger, disengage from the fight.
+							 *    If you are in the thick of things, leave yourself vulnerable.
+							 
+							 You cannot Extend if you don't have engine power.}}">Extend</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Altitude Adjustment - Nose Up}} {{rollbody=*When you point the nose up*, trade Speed for Altitude, 5 to 1. If you are gliding, trade Speed for Altitude 6 to 1.}}">Altitude Adjustment - Nose Up</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Altitude Adjustment - Climb Stead}} {{rollbody=*When you climb steady*, reduce your speed to your stall speed. When you next act, climb by up to your Climb and gain 1 RPM. You can't steady climb without engine power.}}">Altitude Adjustment - Climb Steady</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Altitude Adjustment - Nose Down}} {{rollbody=*When you point the nose down*, trade Altitude for Speed, 1 to 3.
+							
+							*If you aren't diving*, and your Speed is above your Max Speed (@{max-speed}), reduce your Speed by your Energy Loss (@{energy-loss}). This can't take you below Max Speed.}}">Altitude Adjustment - Nose Down</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Pull Up}} {{rollbody=*When you pull up from a steep dive or out of an attack*, take G-Force equal to Speed Factor (@{air-speed-hundreds}). You can spend Altitude to reduce G-Force taken, 1-1. You can take no more G-Force than 1/10th your Handling ([[floor(@{full-load-handling}/10)]] ).
+							
+							If you Pull Up at Altitude 0, **Evade Danger**.}}">Pull Up</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Overstrain}} {{rollbody=Take [[(@{g-force}d10)-(@{character-daring})]] Damage. If your plane survives, reset G-Force to [[floor((@{max-strain})/10)]] Gs.  }}">Overstrain</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Overspeed}} {{rollbody=The engine gains +1 + [[ floor((((@{air-speed-hundreds}*10) + @{air-speed-tens})-(@{overspeed}))/5) ]] RPM. }}">Overspeed</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Boost}} {{rollbody=Add your plane's Boost (@{full-load-boost}) to your Speed, up to Max Speed (@{max-speed}). You can add less than your full Boost.
+							
+							If your speed is below your Dropoff (@{dropoff}), double your Boost.
+							
+							*If you Boost in a Dive*, add to your Speed, even above your Max Speed.
+							
+							Then increase your engine RPM by 1.}}">Boost</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:simple-roll} {{rollname=Cool Off}} {{rollbody=Reduce your speed to Max Speed (@{max-speed}) or less.
+							
+							Take [[(@{RPM})d20<@{comparable-reliability}]] Wear on your engine.}}">Cool Off</button>
+						</li>
+						<li>
+							<button type="roll">Stall/Spin</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:do2d10} {{rollname=Recover}} {{resadv=[[3d10kh2 + (@{character-calm}) + (@{stability})]]}} {{resnorm=[[2d10 + (@{character-calm}) + (@{stability})]]}} {{resdis=[[3d10kl2 + (@{character-calm}) + (@{stability})]]}} {{success=[[15]]}} {{costlysuccess=[[10]]}} {{successtext=You recover smoothly.}} {{costlysuccess=You spin for 6 Energy}} {{failuretext=Spin for 12 energy}} {{options=You must spend Energy (Speed or Altitude, in any mix) equal to the spin to recover. You must then **Dive** and/or **Boost** back to your Stall speed.}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}}">Recover</button>
+						</li>
+						<li>
+							<button type="roll" value="&{template:collision} {{sf_other=[[(?{Speed Factor of the Other Plane?|1})]]}}  {{sf_other_d20=[[(?{Speed Factor of the Other Plane?|1})d20]]}} {{sf_self_d20=[[(@{air-speed-hundreds})d20]]}} {{sf_self=[[@{air-speed-hundreds}]]}} {{min_roll_d20=[[1d20]]}} {{head_on=[[?{Head-On Collision?|Yes,1|No,0}]]}}">Collision</button>
+						</li>
+					</ul>
+				</div>
+				<div class="flexcol shooting game-moves">
+					<span data-i18n="shooting" class="move-title">Shooting</span>
+					<ul>
+						<li>
+							<button type="roll">Open Fire</button>
+						</li>
+						<li>
+							<button type="roll">Take Fire</button>
+						</li>
+						<li>
+							<button type="roll">Draw a Bead</button>
+						</li>
+					</ul>
+				</div>
+				<div class="flexcol going-down game-moves">
+					<span data-i18n="going-down" class="move-title">Going Down</span>
+					<ul>
+						<li>
+							<button type="roll">Bail Out</button>
+						</li>
+						<li>
+							<button type="roll">Go Down</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</div>
 	
 	<input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab' value='ground' />
@@ -240,85 +439,104 @@
 				</div>
 				<div class="flexcol middle">
 					<div class="flexrow variable-stats">
-						<div class="flexcol">
-							<div class "flexcol header spacer">
+						<div class="flexcol labels">
+							<div class="flexcol spacer">
 							&nbsp;
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								Full Load
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								Half Fuel Bombs
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								Full Fuel No Bombs
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								Half Fuel No Bombs
 							</div>
-							<div class "flexcol">
+							<div class="flexcol empty">
 								Empty
 							</div>
 						</div>
-						<div class="flexcol">
-							<div class "flexcol header">
+						<div class="flexcol boost">
+							<div class="flexcol header">
 								Boost
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_full-load-boost" />
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_half-fuel-bombs-boost" />
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_full-fuel-no-bombs-boost" />
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_half-fuel-no-bombs-boost" />
 							</div>
-							<div class "flexcol">
+							<div class "flexcol blank">
 								-
 							</div>
 						</div>
-						<div class="flexcol">
-							
-							<div class "flexcol header">
+						<div class="flexcol handling">
+							<div class="flexcol header">
 								Handling
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_full-load-handling" />
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_half-fuel-bombs-handling" />
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_full-fuel-no-bombs-handling" />
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_half-fuel-no-bombs-handling" />
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_empty-handling" />
 							</div>
 							
 						</div>
-						<div class="flexcol">
-							<div class "flexcol header">
+						<div class="flexcol climb">
+							<div class="flexcol header">
+								Climb
+							</div>
+							<div class="flexcol">
+								<input type="text" name="attr_full-load-climb" />
+							</div>
+							<div class="flexcol">
+								<input type="text" name="attr_full-fuel-no-bombs-climb" />
+							</div>
+							<div class="flexcol">
+								<input type="text" name="attr_half-fuel-bombs-climb" />
+							</div>
+							<div class="flexcol">
+								<input type="text" name="attr_half-fuel-no-bombs-climb" />
+							</div>
+							<div class "flexcol blank">
+								-
+							</div>
+						</div>
+						<div class="flexcol stall">
+							<div class="flexcol header">
 								Stall
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_full-load-stall" />
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_full-fuel-no-bombs-stall" />
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_half-fuel-bombs-stall" />
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_half-fuel-no-bombs-stall" />
 							</div>
-							<div class "flexcol">
+							<div class="flexcol">
 								<input type="text" name="attr_empty-stall" />
 							</div>
 						</div>
@@ -452,27 +670,44 @@
 				</div>
 			</div>
 			<div class="flexrow cards">
-				<div class="flexcol engine-card">
+				<div class="engine-card">
 					<div class="flexrow engine-inputs">
-						<div class="flexcol">
-							<span class="small-title">Reliability</span>
-							<input type="text" name="attr_reliability" />
+						<div class="reliability">
+							<input type="text" name="attr_reliability" placeholder="Reliability" />
 						</div>
-						<div class="flexcol">
-							<span class="small-title">Ideal Alt.</span>
-							<input type="text" name="attr_ideal-altitude" />
+						<div class="ideal-altitude">
+							<input type="text" name="attr_ideal-altitude" placeholder="ideal altitude"/>
 						</div>
-						<div class="flexcol">
-							<span class="small-title">Overspeed</span>
-							<input type="text" name="attr_overspeed" />
+						<div class="overspeed">
+							<input type="text" name="attr_overspeed" placeholder="overspeed"/>
 						</div>
 					</div>
 					<div class="engine-calculated-fields">
-						<div class="RPM">
-							<span name="attr_RPM"></span>
+						<div class="rpm-select">
+							<span data-i18n="rpm">RPM</span>
+							<select name="attr_RPM"> 
+								<option value="0" data-i18n="zero"> 0</option>
+								<option value="1" data-i18n="one">  1</option>
+								<option value="2" data-i18n="two">  2</option>
+								<option value="3" data-i18n="three">3</option>
+								<option value="4" data-i18n="four"> 4</option>
+								<option value="5" data-i18n="five"> 5</option>
+								<option value="6" data-i18n="six">  6</option>
+								<option value="7" data-i18n="seven">7</option>
+							</select>
 						</div>
-						<div class="wear">
-							<span name="attr_wear"></span>
+						<div class="wear-select">
+							<span data-i18n="wear">Wear</span>
+							<select name="attr_wear"> 
+								<option value="0" data-i18n="zero">      0</option>
+								<option value="1" data-i18n="one">       1</option>
+								<option value="2" data-i18n="two">       2</option>
+								<option value="3" data-i18n="three">     3</option>
+								<option value="4" data-i18n="four">      4</option>
+								<option value="stop" data-i18n="stop-c"> STOP</option>
+								<option value="6" data-i18n="six">       6</option>
+								<option class="fire-option" value="fire" data-i18n="fire-x">FIRE!</option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -491,19 +726,98 @@
 	<div class="sheet-template-container">
 		<div class="sheet-template-header">{{rollname}}</div>
 		<div class="sheet-template-body">
-			{{#rollGreater() result success}}Success!{{/rollGreater() result success }}
-			{{#rollBetween() result costlysuccess success}}Success At A Cost!{{/rollBetween() result costlysuccess success}}
-			{{#rollLess() result costlysuccess}}Failure{{/rollLess() result costlysuccess}}
-			{{result}}
+			<div class="sheet-template-result-output">
+				{{#rollTotal() rtype 1}}
+					{{resadv}} {{#rollGreater() holds 0}} + {{holds}} holds. {{/rollGreater() holds 0}}
+				{{/rollTotal() rtype 1}}
+				{{#rollTotal() rtype 0}}
+					{{resnorm}} {{#rollGreater() holds 0}} + {{holds}} holds. {{/rollGreater() holds 0}}
+				{{/rollTotal() rtype 0}}
+				{{#rollTotal() rtype -1}}
+					{{resdis}} {{#rollGreater() holds 0}} + {{holds}} holds. {{/rollGreater() holds 0}}
+				{{/rollTotal() rtype -1}}
+			</div>
+			{{#rollTotal() rtype 1}}
+				{{#rollGreater() resadv success}}
+					{{#^successtext}} Success! {{/^successtext}}
+					{{#successtext}} {{successtext}} {{/successtext}}
+				{{/rollGreater() resadv success }}
+				{{#rollBetween() resadv costlysuccess success}}
+					{{#^costlysuccesstext}} Success At A Cost! {{/^costlysuccesstext}}
+					{{#costlysuccesstext}} {{costlysuccesstext}} {{/costlysuccesstext}}
+				{{/rollBetween() resadv costlysuccess success}}
+				{{#rollLess() resadv costlysuccess}}
+					{{#^failuretext}} Failure {{/^failuretext}}
+					{{#failuretext}} {{failuretext}} {{/failuretext}}
+				{{/rollLess() resadv costlysuccess}}
+			{{/rollTotal() rtype 1}}
+			{{#rollTotal() rtype 0}}
+				{{#rollGreater() resnorm success}}
+					{{#^successtext}} Success! {{/^successtext}}
+					{{#successtext}} {{successtext}} {{/successtext}}
+				{{/rollGreater() resnorm success }}
+				{{#rollBetween() resnorm costlysuccess success}}
+					{{#^costlysuccesstext}} Success At A Cost! {{/^costlysuccesstext}}
+					{{#costlysuccesstext}} {{costlysuccesstext}} {{/costlysuccesstext}}
+				{{/rollBetween() resnorm costlysuccess success}}
+				{{#rollLess() resnorm costlysuccess}}
+					{{#^failuretext}} Failure {{/^failuretext}}
+					{{#failuretext}} {{failuretext}} {{/failuretext}}
+				{{/rollLess() resnorm costlysuccess}}
+			{{/rollTotal() rtype 0}}
+			{{#rollTotal() rtype -1}}
+				{{#rollGreater() resdis success}}
+					{{#^successtext}} Success! {{/^successtext}}
+					{{#successtext}} {{successtext}} {{/successtext}}
+				{{/rollGreater() resdis success }}
+				{{#rollBetween() resdis costlysuccess success}}
+					{{#^costlysuccesstext}} Success At A Cost! {{/^costlysuccesstext}}
+					{{#costlysuccesstext}} {{costlysuccesstext}} {{/costlysuccesstext}}
+				{{/rollBetween() resdis costlysuccess success}}
+				{{#rollLess() resdis costlysuccess}}
+					{{#^failuretext}} Failure {{/^failuretext}}
+					{{#failuretext}} {{failuretext}} {{/failuretext}}
+				{{/rollLess() resdis costlysuccess}}
+			{{/rollTotal() rtype -1}}	
+			{{#options}} <div class="sheet-template-options"> {{options}} </div> {{/options}}
 		</div>
 	</div>
 </rolltemplate>
 
-<rolltemplate class="sheet-rolltemplate-contact">
+<rolltemplate class="sheet-rolltemplate-simple-roll">
 	<div class="sheet-template-container">
-		<div class="sheet-template-header">Contact!</div>
+		<div class="sheet-template-header">{{rollname}}</div>
 		<div class="sheet-template-body">
-			 Respond “Switch On!”, mark 1 RPM on all engines, set cruising Altitude, and set Speed to the lowest Max in the squadron.
+			 {{rollbody}}
+		</div>
+	</div>
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-collision">
+	<div class="sheet-template-container">
+		<div class="sheet-template-header">Collision</div>
+		<div class="sheet-template-body"> 	
+			Both planes take
+			{{#rollTotal() head_on 1}}
+				{{sf_other_d20}} + {{sf_self_d20}}
+			{{/rollTotal() head_on 1}}
+			{{#rollTotal() head_on 0}}
+				{{#rollGreater() sf_other sf_self}}
+					{{sf_other_d20}}
+				{{/rollGreater() sf_other sf_self}}
+				{{#rollGreater() sf_self sf_other}}
+					{{sf_self_d20}}
+				{{/rollGreater() sf_self sf_other}}
+				{{#rollTotal() sf_self sf_other}}
+					{{#rollTotal() sf_self 0}}
+						{{min_roll_d10}}
+					{{/rollTotal() sf_self 0}}
+					{{#^rollTotal() sf_self 0}}
+						{{sf_self_d20}}
+					{{/^rollTotal() sf_self 0}}
+				{{/rollTotal() sf_self sf_other}}
+			{{/rollTotal() head_on 0}}
+			<span data-i18n="damage">Damage:</span>
 		</div>
 	</div>
 </rolltemplate>
@@ -515,7 +829,14 @@
 		updatePlaybook(e);
 	});
 	
-	on("change:chk-stress5 change:chk-stressA", function(e) {
+	on("change:reliability", function(e) {
+		console.log(e);
+		var rel = e.newValue;
+		var comparableReliability = 10 + (-1*rel);
+		setAttrs({"comparable-reliability": comparableReliability});
+	});
+	
+	on("change:chk-stress5 change:chk-stressA change:chk-moves-toggle", function(e) {
 		if (e.sourceAttribute === "chk-stressa")
 		{
 			if (e.newValue === "on")
@@ -525,6 +846,17 @@
 			else 
 			{
 				setAttrs({"burnt-out-toggle":'none'});
+			}
+		}
+		else if (e.sourceAttribute === "chk-moves-toggle")
+		{
+			if (e.newValue === "on")
+			{
+				setAttrs({"game-moves-toggle": 'on'});
+			}
+			else 
+			{
+				setAttrs({"game-moves-toggle":'none'});
 			}
 		}
 		else 
