@@ -3,12 +3,12 @@
 		<div class="title" data-i18n="flying-circus">Flying Circus</div>
 		<div class="horiz-line2">&nbsp;</div>
 		<div class="flexrow stats">
-			<div class="flexcol hard"><input type="text" name="attr_character-hard" /><span data-i18n="hard">Hard</span></div>
-			<div class="flexcol keen"><input type="text" name="attr_character-keen" /><span data-i18n="keen">Keen</span></div>
-			<div class="flexcol calm"><input type="text" name="attr_character-calm" /><span data-i18n="calm">Calm</span></div>
-			<div class="flexcol daring"><input type="text" name="attr_character-daring" /><span data-i18n="daring">Daring</span></div>
+			<div class="flexcol hard"><input type="text" name="attr_character-hard" /><button type="roll" value="&{template:do2d10} {{rollname=Hard Roll}} {{resadv=[[3d10kh2+(@{character-hard})]]}} {{resdis=[[3d10kl2+(@{character-hard})]]}} {{resnorm=[[2d10+@{character-hard}]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}}" data-i18n="hard">Hard</button></div>
+			<div class="flexcol keen"><input type="text" name="attr_character-keen" /><button type="roll" value="&{template:do2d10} {{rollname=Keen Roll}} {{resadv=[[3d10kh2+(@{character-keen})]]}} {{resdis=[[3d10kl2+(@{character-keen})]]}} {{resnorm=[[2d10+@{character-keen}]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}}" data-i18n="keen">Keen</button></div>
+			<div class="flexcol calm"><input type="text" name="attr_character-calm" /><button type="roll" value="&{template:do2d10} {{rollname=Calm Roll}} {{resadv=[[3d10kh2+(@{character-calm})]]}} {{resdis=[[3d10kl2+(@{character-calm})]]}} {{resnorm=[[2d10+@{character-calm}]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}}" data-i18n="calm">Calm</button></div>
+			<div class="flexcol daring"><input type="text" name="attr_character-daring" /><button type="roll" value="&{template:do2d10} {{rollname=Daring Roll}} {{resadv=[[3d10kh2+(@{character-daring})]]}} {{resdis=[[3d10kl2+(@{character-daring})]]}} {{resnorm=[[2d10+@{character-daring}]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}}"  data-i18n="daring">Daring</button></div>
 			<input type="hidden" class='wild-toggle' name='attr_wild-toggle' value='none'/>
-			<div class="flexcol wild"><input type="text" name="attr_character-wild" /><span data-i18n="wild">Wild</span></div>
+			<div class="flexcol wild"><input type="text" name="attr_character-wild" /><button type="roll" value="&{template:do2d10} {{rollname=Wild Roll}} {{resadv=[[3d10kh2+(@{character-wild})]]}} {{resdis=[[3d10kl2+(@{character-wild})]]}} {{resnorm=[[2d10+@{character-wild}]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}}" data-i18n="wild">Wild</button></div>
 		</div>
 		<div class="common flexrow">
 			<div class="flexcol stress">
@@ -21,7 +21,7 @@
 					<input type="hidden" class='burnt-out-toggle' name='attr_burnt-out-toggle' value='none' />
 					<div class="burnt-out aligncenter"><span data-i18n="burnt-out">BURNT OUT</span></div>
 				</div>
-				<div class="flexrow">
+				<div class="flexrow stressed">
 					<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress1" /></div>
 					<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress2" /></div>
 					<div class="flexcol stress box"><input type="checkbox" name="attr_chk-stress3" /></div>
@@ -53,6 +53,7 @@
 		<input type="hidden" class="move-toggle" name="attr_game-moves-toggle" value="0" />
 		<div class="game-moves-container">
 			<div class="flexrow">
+			<!---repeating_engine-cards_$0_reliability -->
 				<div class="flexcol universal game-moves">
 					<span data-i18n="universal" class="move-title">Universal</span>
 					<ul>
@@ -87,7 +88,7 @@
 							<button type="roll" value="&{template:simple-roll} {{rollname=Contact}} {{rollbody=*When you take off*, the GM yells 'Contact!' Respond 'Switch On!', mark 1 RPM on all engines, set cruising Altitude, and set Speed to the lowest Max in the squadron. Make engine noises as appropriate.}}">Contact</button>
 						</li>
 						<li>
-							<button type="roll" value="&{template:do2d10} {{rollname=Air Patrol}} {{holds=[[?{Number of times doing Air Patrol?|0}]]}} {{resadv=[[3d10kh2+@{character-calm}]]}} {{resdis=[[3d10kl2+@{character-calm}]]}} {{resnorm=[[2d10+@{character-calm}]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{successtext= You find what you were looking for.}} {{costlysuccesstext=You find something else.}} {{failuretext=Something finds you and Engage is rolled at Disadvantage or push Fuel Check and roll again.}}" >
+							<button type="roll" value="&{template:do2d10} {{rollname=Air Patrol}} {{holds=[[?{Number of times doing Air Patrol?|0}]]}} {{resadv=[[3d10kh2+(@{character-calm}) + (?{Number of times doing Air Patrol?|0})]]}} {{resdis=[[3d10kl2+(@{character-calm}) +?{Number of times doing Air Patrol?|0}]]}} {{resnorm=[[2d10+@{character-calm}+?{Number of times doing Air Patrol?|0}]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{successtext= You find what you were looking for.}} {{costlysuccesstext=You find something else.}} {{failuretext=Something finds you and Engage is rolled at Disadvantage or push Fuel Check and roll again.}}" >
 								Air Patrol
 							</button>
 						</li>
@@ -102,7 +103,7 @@
 					<span data-i18n="air-combat" class="move-title">Air Combat</span>
 					<ul>
 						<li>
-							<button type="roll" value="&{template:do2d10} {{rollname=Engage}}{{resadv=[[3d10kh2]]}} {{resnorm=[[2d10]]}} {{resdis=[[3d10kl2]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{holds=[[?{Engage bonuses?|0}]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{options=On a 16+ choose 2. On a success at a cost, choose 1. Then the enemy chooses one.*When you join a fight or ambush*, just pick 1. 
+							<button type="roll" value="&{template:do2d10} {{rollname=Engage}}{{resadv=[[3d10kh2 + (?{Engage bonuses?|0})]]}} {{resnorm=[[2d10 + (?{Engage bonuses?|0})]]}} {{resdis=[[3d10kl2 + (?{Engage bonuses?|0})]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{options=On a 16+ choose 2. On a success at a cost, choose 1. Then the enemy chooses one.*When you join a fight or ambush*, just pick 1. 
 						
 						*   Start with altitude Advantage.
 						*   Spot the enemy and act while they are unaware.
@@ -110,7 +111,7 @@
 						*   Come in behind your foe.}}" >Engage</button>
 						</li>
 						<li>
-							<button type="roll" value="&{template:do2d10} {{rollname=Stay on Target}}{{resadv=[[3d10kh2 +@{character-calm}]]}} {{resnorm=[[2d10+@{character-calm}]]}} {{resdis=[[3d10kl2+@{character-calm}]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{costlysuccesstext=On a hit, you make it to the target, and only then face consequences.}} {{successtext=Choose 1: take Advantage forward, or soften the consequences.}}">Stay on Target</button>
+							<button type="roll" value="&{template:do2d10} {{rollname=Stay on Target}}{{resadv=[[3d10kh2 +@{character-calm}]]}} {{resnorm=[[2d10+@{character-calm}]]}} {{resdis=[[3d10kl2+@{character-calm}]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{costlysuccesstext=You make it to the target, and only then face consequences.}} {{successtext=Choose 1: take Advantage forward, or soften the consequences.}}">Stay on Target</button>
 						</li>
 						<li>
 							<button type="roll" value="&{template:do2d10} {{rollname=Evade Danger}}{{resadv=[[3d10kh2 + (@{character-keen})]]}} {{resnorm=[[2d10 + (@{character-keen})]]}} {{resdis=[[3d10kl2 + (@{character-keen})]]}} {{success=[[15]]}} {{costlysuccess=[[11]]}} {{rtype=[[?{Roll Type|Advantage, 1|Normal,0|Disadvantage,-1}]]}} {{costlysuccesstext=Choose 1.}} {{successtext=You evade danger.}} {{failuretext=Take all three.}} {{options=
@@ -126,13 +127,13 @@
 						</li>
 						<li>
 							<button type="roll" value="&{template:simple-roll} {{rollname=Chase!}} {{rollbody=*When there's a straight line chase or race*, **compare speeds**.
-							    * *If you're at equal speed*, nothing changes.
-								* *If the pursuer is faster*, move one range band closer.
-								* *If the defender is faster*, move one range band farther away.
+							*    *If you're at equal speed*, nothing changes.
+						    *    *If the pursuer is faster*, move one range band closer.
+							*    *If the defender is faster*, move one range band farther away.
 								
-								A difference in speed of 10 or more means the chase immediately ends: the pursuer gets as close as they want, or the defender gets out of range.
+							A difference in speed of 10 or more means the chase immediately ends: the pursuer gets as close as they want, or the defender gets out of range.
 								
-								*If a plane is forced to turn*, they count as slower regardless of speed.}}">Chase!</button>
+							*If a plane is forced to turn*, they count as slower regardless of speed.}}">Chase!</button>
 						</li>
 						<li>
 							<button type="roll">Dogfight - Pursue Them, Make an Attack</button>
@@ -211,7 +212,7 @@
 						<li>
 							<button type="roll" value="&{template:simple-roll} {{rollname=Cool Off}} {{rollbody=Reduce your speed to Max Speed (@{max-speed}) or less.
 							
-							Take [[(@{RPM})d20<@{comparable-reliability}]] Wear on your engine.}}">Cool Off</button>
+							Take [[(@{RPM})d20<=@{comparable-reliability}]] Wear on your engine.}}">Cool Off</button>
 						</li>
 						<li>
 							<button type="roll">Stall/Spin</button>
@@ -224,20 +225,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="flexcol shooting game-moves">
-					<span data-i18n="shooting" class="move-title">Shooting</span>
-					<ul>
-						<li>
-							<button type="roll">Open Fire</button>
-						</li>
-						<li>
-							<button type="roll">Take Fire</button>
-						</li>
-						<li>
-							<button type="roll">Draw a Bead</button>
-						</li>
-					</ul>
-				</div>
+				
 				<div class="flexcol going-down game-moves">
 					<span data-i18n="going-down" class="move-title">Going Down</span>
 					<ul>
@@ -382,55 +370,57 @@
 						
 						<div class="plate">Altitude</div>
 					</div>
-					<div class="plane-stats">
+					<div class="flexrow plane-stats">
 						<div class="air-stats indicator">
 							<div class="visibility">
 								<div class="label">Visibility</div>
-								<div class="input"><input type="text" name="attr_visibility" /> </div>
+								<input type="text" name="attr_visibility" />
 							</div>
 							<div class="energy-loss">
+								<input type="text" name="attr_energy-loss" />
 								<div class="label">Energy Loss</div>
-								<div class="input"><input type="text" name="attr_energy-loss" /> </div>
 							</div>
 							<div class="turn-bleed">
+								<input type="text" name="attr_turn-bleed" />
 								<div class="label">Turn Bleed</div>
-								<div class="input"><input type="text" name="attr_turn-bleed" /> </div>
 							</div>
 							<div class="stability">
+								<input type="text" name="attr_stability" /> 
 								<div class="label">Stability</div>
-								<div class="input"><input type="text" name="attr_stability" /> </div>
 							</div>
 						</div>
-						<div class="escape square-box">
-							<input type="text" name="attr_escape" />
-							<div class="label">Escape</div>
-						</div>
-						<div class="crash square-box">
-							<input type="text" name="attr_crash" />
-							<div class="label">Crash</div>
-						</div>
-					</div>
-					<div class="flexrow">
 						<div class="flexcol plane-stress square-box">
 							<input type="text" name="attr_plane-stress" />
 							<div class="label">Stress</div>
 						</div>
+					</div>
+					<div class="flexrow">
+						<div class="flexcol flight-stats">
+							<div class="flexcol escape square-box">
+								<input type="text" name="attr_escape" />
+								<div class="label">Escape</div>
+							</div>
+							<div class="flexcol crash square-box">
+								<input type="text" name="attr_crash" />
+								<div class="label">Crash</div>
+							</div>
+						</div>
 						<div class="plane-health indicator flexcol">
 							<div class="toughness flexrow">
 								<div class="current-toughness">
-									<input type="text" name="attr_current-toughness" />
+									<input type="text" name="attr_toughness" />
 								</div>
 								<div class="max-toughness">
-									<input type="text" name="attr_max-toughness" />
+									<input type="text" name="attr_toughness_max" />
 								</div>
 							</div>
 							<span>Toughness</span>
 							<div class="strain flexrow">
 								<div class="current-strain">
-									<input type="text" name="attr_current-strain" />
+									<input type="text" name="attr_strain" />
 								</div>
 								<div class="max-strain">
-									<input type="text" name="attr_max-strain" />
+									<input type="text" name="attr_strain_max" />
 								</div>
 							</div>
 							<span>Strain</span>
@@ -540,81 +530,63 @@
 								<input type="text" name="attr_empty-stall" />
 							</div>
 						</div>
+						<div class="flexcol speed">
+							<div class="flexcol header">
+								Speed
+							</div>
+							<div class="flexcol">
+								<input type="text" name="attr_full-load-speed" />
+							</div>
+							<div class="flexcol">
+								<input type="text" name="attr_full-fuel-no-bombs-speed" />
+							</div>
+							<div class="flexcol">
+								<input type="text" name="attr_half-fuel-bombs-speed" />
+							</div>
+							<div class="flexcol">
+								<input type="text" name="attr_half-fuel-no-bombs-speed" />
+							</div>
+							<div class "flexcol blank">
+								-
+							</div>
+						</div>
 					</div>
 					<div class="plate">Variable Stats</div>
 					<div class="fuel square-box">
 						<input type="text" name="attr_fuel" />
 						<span>Fuel</span>
 					</div>
-					<div class="flexcol ordinance">
-						<div class="header"> Ordinance </div>
-						<div class="ordinance-line"><input type="text" name="attr_ord1"/></div>
-						<div class="ordinance-line"><input type="text" name="attr_ord2"/></div>
-						<div class="ordinance-line"><input type="text" name="attr_ord3"/></div>
-						<div class="ordinance-line"><input type="text" name="attr_ord4"/></div>
-						<div class="ordinance-line"><input type="text" name="attr_ord5"/></div>
+					<div class="flexcol vital-parts">
+						<div class="flexrow vital-parts header">
+							Vital Parts
+						</div>
+						<fieldset class="repeating_vital_parts">
+							<div class="vital-parts">
+								<input type="text" class="vital-parts" name="attr_vital-parts"/>
+							</div>
+						</fieldset>
 					</div>
-					<div class="inventory">
-						<div class="flexrow header">
-							<div class="flexcol">Vital Parts</div>
-							<div class="flexcol">Armour</div>
+					<div class="flexcol">
+						<div class="armour header">
+							Armour
 						</div>
-						<div class="flexrow">
-							<div class="flexcol">
-								<input type="text" name="attr_vp1" />
+						<fieldset class="repeating_armour">
+							<div class="armour">
+								<input type="text" class="armour" name="attr_armour"/>
 							</div>
-							<div class="flexcol">
-								<input type="text" name="attr_arm1" />
+						</fieldset>
+					</div>
+					<div class="flexcol ordinance">
+						<div class="flexrow header"><span>Ordnance</span><input type="text" name="attr_max-bomb-load" placeholder="Max Bomb Load" /> </div>
+						<fieldset class="repeating_ordnance">
+							<div class="Ordnance">
+								<input type="text" class="ordnance" name="attr_ordnance"/>
 							</div>
-						</div>
-						<div class="flexrow">
-							<div class="flexcol">
-								<input type="text" name="attr_vp2" />
-							</div>
-							<div class="flexcol">
-								<input type="text" name="attr_arm2" />
-							</div>
-						</div>
-						<div class="flexrow">
-							<div class="flexcol">
-								<input type="text" name="attr_vp3" />
-							</div>
-							<div class="flexcol">
-								<input type="text" name="attr_arm3" />
-							</div>
-						</div>
-						<div class="flexrow">
-							<div class="flexcol">
-								<input type="text" name="attr_vp4" />
-							</div>
-							<div class="flexcol">
-								<input type="text" name="attr_arm4" />
-							</div>
-						</div>
-						<div class="flexrow">
-							<div class="flexcol">
-								<input type="text" name="attr_vp5" />
-							</div>
-							<div class="flexcol">
-								<input type="text" name="attr_arm5" />
-							</div>
-						</div>
-						<div class="flexrow">
-							<div class="flexcol">
-								<input type="text" name="attr_vp6" />
-							</div>
-							<div class="flexcol">
-								<input type="text" name="attr_arm6" />
-							</div>
-						</div>
-						<div class="flexrow">
-							<div class="flexcol">
-								<input type="text" name="attr_vp7" />
-							</div>
-							<div class="flexcol">
-								<input type="text" name="attr_arm7" />
-							</div>
-						</div>
+						</fieldset>
+					</div>
+					
+					<div class="flexcol notes">
+						<textarea name="attr_notes" class="notes"></textarea>
 					</div>
 				</div>
 				<div class="flexcol right-side">
@@ -644,6 +616,10 @@
 							<option value="9"><span class="big-digit">9</span><span class="small-digit">00</span></option>
 						</select>
 						<div class="plate">Air Speed</div>
+						<div class="air-speed-stats square-box">
+							<input type="text" name="attr_dropoff" />
+							<span>Dropoff</span>
+						</div>
 					</div>
 					<div class="g-force indicator">
 						<select class="g-force" name="attr_g-force">
@@ -657,62 +633,130 @@
 							<option value="3">3</option>
 							<option value="2">2</option>
 							<option value="1">1</option>
-							<option value="0">0</option>
+							<option value="0" selected="selected">0</option>
 						</select>
 						<div class="label">G-Force</div>
 					</div>
-					<div class="air-speed-stats square-box">
-						<input type="text" name="attr_max-speed" />
-						<span>Max Speed</span>
-						<input type="text" name="attr_dropoff" />
-						<span>Dropoff</span>
-					</div>
+					
 				</div>
 			</div>
 			<div class="flexrow cards">
-				<div class="engine-card">
-					<div class="flexrow engine-inputs">
-						<div class="reliability">
-							<input type="text" name="attr_reliability" placeholder="Reliability" />
+				<fieldset class="repeating_engine-cards">
+					<div class="engine-card">
+						<div class="flexrow engine-inputs">
+							<div class="reliability">
+								<input type="text" name="attr_reliability" placeholder="Reliability" />
+							</div>
+							<div class="ideal-altitude">
+								<input type="text" name="attr_ideal-altitude" placeholder="ideal altitude"/>
+							</div>
+							<div class="overspeed">
+								<input type="text" name="attr_overspeed" placeholder="overspeed"/>
+							</div>
 						</div>
-						<div class="ideal-altitude">
-							<input type="text" name="attr_ideal-altitude" placeholder="ideal altitude"/>
-						</div>
-						<div class="overspeed">
-							<input type="text" name="attr_overspeed" placeholder="overspeed"/>
+						<div class="engine-calculated-fields">
+							<div class="rpm-select">
+								<span data-i18n="rpm">RPM</span>
+								<select name="attr_RPM"> 
+									<option value="0" data-i18n="zero"> 0</option>
+									<option value="1" data-i18n="one">  1</option>
+									<option value="2" data-i18n="two">  2</option>
+									<option value="3" data-i18n="three">3</option>
+									<option value="4" data-i18n="four"> 4</option>
+									<option value="5" data-i18n="five"> 5</option>
+									<option value="6" data-i18n="six">  6</option>
+									<option value="7" data-i18n="seven">7</option>
+								</select>
+							</div>
+							<div class="wear-select">
+								<span data-i18n="wear">Wear</span>
+								<select name="attr_wear"> 
+									<option value="0" data-i18n="zero">      0</option>
+									<option value="1" data-i18n="one">       1</option>
+									<option value="2" data-i18n="two">       2</option>
+									<option value="3" data-i18n="three">     3</option>
+									<option value="4" data-i18n="four">      4</option>
+									<option value="stop" data-i18n="stop-c"> STOP</option>
+									<option value="6" data-i18n="six">       6</option>
+									<option class="fire-option" value="fire" data-i18n="fire-x">FIRE!</option>
+								</select>
+							</div>
 						</div>
 					</div>
-					<div class="engine-calculated-fields">
-						<div class="rpm-select">
-							<span data-i18n="rpm">RPM</span>
-							<select name="attr_RPM"> 
-								<option value="0" data-i18n="zero"> 0</option>
-								<option value="1" data-i18n="one">  1</option>
-								<option value="2" data-i18n="two">  2</option>
-								<option value="3" data-i18n="three">3</option>
-								<option value="4" data-i18n="four"> 4</option>
-								<option value="5" data-i18n="five"> 5</option>
-								<option value="6" data-i18n="six">  6</option>
-								<option value="7" data-i18n="seven">7</option>
-							</select>
-						</div>
-						<div class="wear-select">
-							<span data-i18n="wear">Wear</span>
-							<select name="attr_wear"> 
-								<option value="0" data-i18n="zero">      0</option>
-								<option value="1" data-i18n="one">       1</option>
-								<option value="2" data-i18n="two">       2</option>
-								<option value="3" data-i18n="three">     3</option>
-								<option value="4" data-i18n="four">      4</option>
-								<option value="stop" data-i18n="stop-c"> STOP</option>
-								<option value="6" data-i18n="six">       6</option>
-								<option class="fire-option" value="fire" data-i18n="fire-x">FIRE!</option>
-							</select>
-						</div>
-					</div>
-				</div>
+				</fieldset>
 				<div class="flexcol weapons">
-					<!--- fieldset for weapons -->
+					<fieldset class="repeating_weapon-cards">
+						<div class="flexcol weapon-card">
+							<div class="flexcol weapon-stats">
+								<div class=" flexrow weapon-type">
+									<span class="header">Weapon Type</span>
+									<input type="text" name="attr_weapon-type" />
+								</div>
+								<div class="weapon-stats-inner flexrow">
+									<div class="flexcol">
+										<span class="header">Ammo</span>
+										<div class="weapon-stats input"><input type="text" name="attr_ammo" /></div>
+									</div>
+									<div class="flexcol">
+										<span class="header">AP</span>
+										<div class="weapon-stats input"><input type="text" name="attr_AP" /></div>
+									</div>
+									<div class="flexcol">
+										<span class="header">Jam</span>
+										<div class="weapon-stats input"><input type="text" name="attr_jam" /></div>
+									</div>
+								</div>
+							</div>
+							<div class="flexrow range-table">
+								<div class="flexrow advantage-radios">
+									<div class="flexcol radiocol">
+										<span>Advantage</span>
+										<input type="radio" name="attr_rtype" value="1"/>
+									</div>
+									<div class="flexcol radiocol">
+										<span>Normal</span>
+										<input type="radio" name="attr_rtype" value="0" checked="true" />
+									</div>
+									<div class="flexcol radiocol">
+										<span>Disadvantage</span>
+										<input type="radio" name="attr_rtype" value="-1"/>
+									</div>
+								</div>
+								<div class="flexcol header labels">
+									<div>Range</div>
+									<div>Hits</div>
+									<div>Damage</div>
+								</div>
+								<div class="flexcol">
+									<div class="header"><button type="roll" value="@{open-fire-move-knife}" title="Open Fire at Knife Range!">Knife</button></div>
+									<div><input type="text" name="attr_hits-knife" /></div>
+									<div><input type="text" name="attr_damage-knife" /></div>
+									<input type="hidden" name="attr_open-fire-move-knife" value="" />
+								</div>
+								<div class="flexcol">
+									<div class="header"><button type="roll" value="@{open-fire-move-close}" title="Open Fire at Close Range!">Close</button></div>
+									<div><input type="text" name="attr_hits-close" /></div>
+									<div><input type="text" name="attr_damage-close" /></div>
+									<input type="hidden" name="attr_open-fire-move-close" value="" />
+								</div>
+								<div class="flexcol">
+									<div class="header"><button type="roll" value="@{open-fire-move-long}" title="Open Fire at Long Range!">Long</button></div>
+									<div><input type="text" name="attr_hits-long" /></div>
+									<div><input type="text" name="attr_damage-long" /></div>
+									<input type="hidden" name="attr_open-fire-move-long" value="" />
+								</div>
+								<div class="flexcol">
+									<div class="header"><button type="roll" value="@{open-fire-move-extreme}" title="Open Fire at Extreme Range!">Extreme</button></div>
+									<div><input type="text" name="attr_hits-extreme" /></div>
+									<div><input type="text" name="attr_damage-extreme" /></div>
+									<input type="hidden" name="attr_open-fire-move-extreme" value="" />
+								</div>
+							</div>
+							<div class="flexcol weapon-tags">
+								<input type="text" name="attr_weapon-tags" placeholder="Tags" title="Tags for your weapon"/>
+							</div>
+						</div>
+					</fieldset>
 					
 				</div>
 				<div class="flexcol radiator-card">
@@ -822,6 +866,138 @@
 	</div>
 </rolltemplate>
 
+<rolltemplate class="sheet-rolltemplate-open-fire">
+	<div class="sheet-template-container">
+		<div class="sheet-template-header">Open Fire - at {{range}} range</div>
+		<div class="sheet-template-body"> 	
+			<div class="sheet-roll-output">
+				<span class="sheet-roll-label">Roll:</span><span class="sheet-roll-out">{{roll}}</span>
+			</div>
+			{{#rollGreater() roll 19}}
+				<div class="sheet-roll-hits">Hits: {{closer-hits}}</div>
+				<div class="sheet-roll-damage">Damage: {{closer-damage}}</div> 
+				<div class="sheet-crits-roll">Crit Check: {{closer-crits-roll}}</div>
+				{{#rollWasCrit() closer-crits-roll}}
+					<div class="sheet-crew-crit">Your attack hits a crew member!</div>
+				{{/rollWasCrit() closer-crits-roll}}
+				{{#rollGreater() closer-crits-roll 19}}
+					<div class="sheet-crit-results">The Attack crits!</div>
+					{{#closer-crits-roll2}}
+						<div class="sheet-crits-roll">Second Crit Check: {{closer-crits-roll2}}</div>
+						{{#rollGreater() closer-crits-roll2 19}}
+							<div class="sheet-crit-results">The attack crits again!</div>
+							{{#closer-crits-roll3}}
+								<div class="sheet-crits-roll">Third Crit Check: {{closer-crits-roll3}}</div>
+								{{#rollGreater() closer-crits-roll3 19}}
+									<div class="sheet-crit-results">The attack crits again!</div> 
+									{{#closer-crits-roll4}}
+										<div class="sheet-crits-roll">Fourth Crit Check: {{closer-crits-roll4}}</div>
+									{{/closer-crits-roll4}}
+								{{/rollGreater() closer-crits-roll3 19}}
+							{{/closer-crits-roll3}}
+						{{/rollGreater() closer-crits-roll2 19}}
+					{{/closer-crits-roll2}}
+				{{/rollGreater() closer-crits-roll 19}}
+				{{#rollLess() closer-crits-roll jam-chance-closest}}
+					<div class="sheet-crit-failure">Your gun(s) jam up!</div>
+				{{/rollLess() closer-crits-roll jam-chance-closest}}
+			{{/rollGreater() roll 19}}
+			{{#rollBetween() roll 16 19}}
+				<div class="sheet-roll-hits">Hits: {{current-hits}}</div>
+				<div class="sheet-roll-damage">Damage: {{current-damage}}</div>
+				<div class="sheet-crits-roll">Crit Check: {{current-crits-roll}}</div>
+				{{#rollWasCrit() current-crits-roll}}
+					<div class="sheet-crew-crit">Your attack hits a crew member!</div>
+				{{/rollWasCrit() current-crits-roll}}
+				{{#rollGreater() current-crits-roll 19}}
+					<div class="sheet-crit-results">The Attack crits!</div>
+					{{#current-crits-roll2}}
+						<div class="sheet-crits-roll">Second Crit Check: {{current-crits-roll2}}</div>
+						{{#rollGreater() current-crits-roll2 19}}
+							<div class="sheet-crit-results">The attack crits again!</div>
+							{{#current-crits-roll3}}
+								<div class="sheet-crits-roll">Third Crit Check: {{current-crits-roll3}}</div>
+								{{#rollGreater() current-crits-roll3 19}}
+									<div class="sheet-crit-results">The attack crits again!</div> 
+									{{#current-crits-roll4}}
+										<div class="sheet-crits-roll">Fourth Crit Check: {{current-crits-roll4}}</div>
+									{{/current-crits-roll4}}
+								{{/rollGreater() current-crits-roll3 19}}
+							{{/current-crits-roll3}}
+						{{/rollGreater() current-crits-roll2 19}}
+					{{/current-crits-roll2}}
+				{{/rollGreater() current-crits-roll 19}}
+				{{#rollLess() closer-crits-roll jam-chance-current}}
+					<div class="sheet-crit-failure">Your gun(s) jam up!</div>
+				{{/rollLess() closer-crits-roll jam-chance-current}}
+			{{/rollBetween() roll 16 19}}
+			{{#rollBetween() roll 11 15}}
+				<div class="sheet-roll-hits">Hits: {{farther-hits}}</div>
+				<div class="sheet-roll-damage">Damage: {{farther-damage}}</div>
+				<div class="sheet-crits-roll">Crit Check: {{farther-crits-roll}}</div>
+				{{#rollWasCrit() farther-crits-roll}}
+					<div class="sheet-crew-crit">Your attack hits a crew member!</div>
+				{{/rollWasCrit() farther-crits-roll}}
+				{{#rollGreater() farther-crits-roll 19}}
+					<div class="sheet-crit-results">The Attack crits!</div>
+					{{#farther-crits-roll2}}
+						<div class="sheet-crits-roll">Second Crit Check: {{farther-crits-roll2}}</div>
+						{{#rollGreater() farther-crits-roll2 19}}
+							<div class="sheet-crit-results">The attack crits again!</div>
+							{{#farther-crits-roll3}}
+								<div class="sheet-crits-roll">Third Crit Check: {{farther-crits-roll3}}</div>
+								{{#rollGreater() farther-crits-roll3 19}}
+									<div class="sheet-crit-results">The attack crits again!</div> 
+									{{#farther-crits-roll4}}
+										<div class="sheet-crits-roll">Fourth Crit Check: {{farther-crits-roll4}}</div>
+									{{/farther-crits-roll4}}
+								{{/rollGreater() farther-crits-roll3 19}}
+							{{/farther-crits-roll3}}
+						{{/rollGreater() farther-crits-roll2 19}}
+					{{/farther-crits-roll2}}
+				{{/rollGreater() farther-crits-roll 19}}
+				{{#rollLess() closer-crits-roll jam-chance-farther}}
+					<div class="sheet-crit-failure">Your gun(s) jam up!</div>
+				{{/rollLess() closer-crits-roll jam-chance-farther}}
+			{{/rollBetween() roll 11 15}}
+			{{#rollLess() roll 11}}
+				 <div class="sheet-roll-hits">Hits: {{furthest-hits}}</div>
+				<div class="sheet-roll-damage">Damage: {{furthest-damage}}</div>
+				<div class="sheet-crits-roll">Crit Check: {{furthest-crits-roll}}</div>
+				{{#rollWasCrit() furthest-crits-roll}}
+					<div class="sheet-crew-crit">Your attack hits a crew member!</div>
+				{{/rollWasCrit() furthest-crits-roll}}
+				{{#rollGreater() furthest-crits-roll 19}}
+					<div class="sheet-crit-results">The Attack crits!</div>
+					{{#furthest-crits-roll2}}
+						<div class="sheet-crits-roll">Second Crit Check: {{furthest-crits-roll2}}</div>
+						{{#rollGreater() furthest-crits-roll2 19}}
+							<div class="sheet-crit-results">The attack crits again!</div>
+							{{#furthest-crits-roll3}}
+								<div class="sheet-crits-roll">Third Crit Check: {{furthest-crits-roll3}}</div>
+								{{#rollGreater() furthest-crits-roll3 19}}
+									<div class="sheet-crit-results">The attack crits again!</div> 
+									{{#furthest-crits-roll4}}
+										<div class="sheet-crits-roll">Fourth Crit Check: {{furthest-crits-roll4}}</div>
+									{{/furthest-crits-roll4}}
+								{{/rollGreater() furthest-crits-roll3 19}}
+							{{/furthest-crits-roll3}}
+						{{/rollGreater() furthest-crits-roll2 19}}
+					{{/furthest-crits-roll2}}
+				{{/rollGreater() furthest-crits-roll 19}}
+				{{#rollLess() closer-crits-roll jam-chance-furthest}}
+					<div class="sheet-crit-failure">Your gun(s) jam up!</div>
+				{{/rollLess() closer-crits-roll jam-chance-furthest}}
+			{{/rollLess() roll 11}}
+			
+			<div class="sheet-open-fire-crit-options">
+				A Crit destroys one of the plane’s Vital Parts. 
+			</div>
+		</div>
+	</div>
+
+</rolltemplate>
+
 <script type="text/worker">
 	const attribs = ['hard', 'keen', 'calm', 'daring', 'wild'];
 	
@@ -829,7 +1005,8 @@
 		updatePlaybook(e);
 	});
 	
-	on("change:reliability", function(e) {
+	const engine_ids = ["0"];
+	on("change:repeating_engine-cards_0_reliability", function(e) {
 		console.log(e);
 		var rel = e.newValue;
 		var comparableReliability = 10 + (-1*rel);
@@ -882,20 +1059,158 @@
         });
     });
 	
-	on("sheet:opened", function() {
-		console.log("sheet opened.");
-		getAttrs(["RPM", "wear"], function(v) {
-			console.log(v);
-			if (typeof v.RPM === "undefined")
-			{
-				setAttrs({"RPM":0});
-			}
+	on("change:repeating_engine-cards", function() {
+		getSectionIDs("engine-cards", function(idarray) {
 			
-			if (typeof v.wear === "undefined")
-			{
-				setAttrs({"wear":0});
+		});
+	});
+	
+	var modify_jamming = function(st, closest_hits, current_hits, farther_hits, furthest_hits) {
+		var result = st.replace(/#distance#/g, "closest").replace(/#hits#/g, closest_hits);
+		result += st.replace(/#distance#/g, "current").replace(/#hits#/g, current_hits);
+		result += st.replace(/#distance#/g, "farther").replace(/#hits#/g, farther_hits);
+		result += st.replace(/#distance#/g, "furthest").replace(/#hits#/g, furthest_hits);
+		
+		return result;
+	};
+	
+	const keys = ["rtype", "hits-knife", "damage-knife", "hits-close", "damage-close", "hits-long", "damage-long", "hits-extreme", "damage-extreme", "jam", "weapon-tags"];
+	on("change:repeating_weapon-cards", function() {
+		console.log("weapon cards");
+		getSectionIDs("weapon-cards", function(idarray) {
+			for(var i=0; i<idarray.length; i++) {
+				let id = idarray[i];
+				let parms = [];
+				keys.forEach(key => {
+					parms.push(`repeating_weapon-cards_${id}_${key}`);
+				});
+				getAttrs(parms, function(v) {
+					let roll_type = parseInt(v[`repeating_weapon-cards_${id}_rtype`]);
+					
+					let knife_hits = parseInt(v[`repeating_weapon-cards_${id}_hits-knife`]);
+					let knife_damage = parseInt(v[`repeating_weapon-cards_${id}_damage-knife`]);
+					
+					let close_hits = parseInt(v[`repeating_weapon-cards_${id}_hits-close`]);
+					let close_damage = parseInt(v[`repeating_weapon-cards_${id}_damage-close`]);
+					
+					let long_hits = parseInt(v[`repeating_weapon-cards_${id}_hits-long`]);
+					let long_damage = parseInt(v[`repeating_weapon-cards_${id}_damage-long`]);
+					
+					let extreme_hits = parseInt(v[`repeating_weapon-cards_${id}_hits-extreme`]);
+					let extreme_damage = parseInt(v[`repeating_weapon-cards_${id}_damage-extreme`]);
+					
+					let jam_chance = v[`repeating_weapon-cards_${id}_jam`];
+					
+					let weapon_tags = v[`repeating_weapon-cards_${id}_weapon-tags`];
+					weapon_tags = weapon_tags.toLocaleLowerCase();
+					
+					let rapid_fire = "";
+					
+					if (weapon_tags.indexOf("rapid fire") > -1) {
+						rapid_fire = "?{Rapid Fire?|Yes,1|No,0}";
+					}
+					
+					var jam = 1;
+					var jam_rapid = 2;
+					if (jam_chance.indexOf("/") > -1) {
+						var chances = jam_chance.split("/");
+						if (rapid_fire.length > 0 && chances.length > 1) {
+							jam_rapid = parseInt(chances[1]);
+						}
+						if (chances.length > 0)
+						{
+							jam = parseInt(chances[0]);
+						}
+					}
+					else {
+						jam = parseInt(jam_chance);
+						jam_rapid = jam + 1;
+					}
+					
+					var jamming = "{{jam-chance-#distance#=[["+jam+"+(#hits#)]]}} {{jam-chance-rapid-#distance#=[["+jam_rapid+"+(#hits#)]]}}"
+					
+					let roll_temp = "[[2d10 + (@{character-hard})]]";
+					if (roll_type === 1)
+					{
+						roll_temp = "[[3d10kh2 + (@{character-hard})]]";
+					}
+					else if(roll_type === -1) 
+					{
+						roll_temp = "[[3d10kl2 + (@{character-hard})]]";
+					}
+					
+					var knife_crits   = "{{current-crits-roll=[[1d20 + ("+knife_hits+")   - (?{Target Armour Coverage?|0})]]}}";
+					var close_crits   = "{{current-crits-roll=[[1d20 + ("+close_hits+")   - (?{Target Armour Coverage?|0})]]}}";
+					var long_crits    = "{{current-crits-roll=[[1d20 + ("+long_hits+")   - (?{Target Armour Coverage?|0})]]}}";
+					var extreme_crits = "{{current-crits-roll=[[1d20 + ("+extreme_hits+")   - (?{Target Armour Coverage?|0})]]}}";
+					
+					var mod_knife_hits = knife_hits;
+					var iter = 2;
+					while (mod_knife_hits > 1)
+					{
+						mod_knife_hits = mod_knife_hits/2;
+						knife_crits += "{{current-crits-roll"+iter+"=[[1d20 + (" + mod_knife_hits +") - (?{Target Armour Coverage?|0})]]}}";
+						iter+=1;
+					}
+					
+					var mod_close_hits = close_hits;
+					var iter = 2;
+					while (mod_close_hits > 1)
+					{
+						mod_close_hits = mod_close_hits/2;
+						close_crits += "{{current-crits-roll"+iter+"=[[1d20 + (" + mod_close_hits +") - (?{Target Armour Coverage?|0})]]}}";
+						iter+=1;
+					}
+					
+					var mod_long_hits = long_hits;
+					var iter = 2;
+					while (mod_long_hits > 1)
+					{
+						mod_long_hits = mod_long_hits/2;
+						long_crits += "{{current-crits-roll"+iter+"=[[1d20 + (" + mod_long_hits +") - (?{Target Armour Coverage?|0})]]}}";
+						iter+=1;
+					}
+					
+					var mod_extreme_hits = extreme_hits;
+					var iter = 2;
+					while (mod_extreme_hits > 1)
+					{
+						mod_extreme_hits = mod_extreme_hits/2;
+						extreme_crits += "{{current-crits-roll"+iter+"=[[1d20 + (" + mod_extreme_hits +") - (?{Target Armour Coverage?|0})]]}}";
+						iter+=1;
+					}
+					
+					let open_fire_move_knife = "&{template:open-fire} {{range=Knife}} {{roll=" + roll_temp + "}} {{current-damage=[[" + knife_damage + "]]}} {{current-hits=[["+ knife_hits+"]]}} {{closer-damage=[["+knife_damage+"]]}} {{closer-hits=[["+knife_hits+"]]}} {{farther-damage=[["+close_damage+"]]}} {{farther-hits=[["+close_hits+"]]}} {{furthest-damage=[["+long_damage+"]]}} {{furthest-hits=[["+long_hits+"]]}} "+knife_crits + modify_jamming(jamming, knife_hits, knife_hits, close_hits, long_hits);
+					
+					let open_fire_move_close = "&{template:open-fire} {{range=Close}} {{roll="+roll_temp+"}} {{current-damage=[["+close_damage+"]]}} {{current-hits=[["+close_hits+"]]}} {{closer-damage=[["+knife_damage+"]]}} {{closer-hits=[["+knife_hits+"]]}} {{farther-damage=[["+long_damage+"]]}} {{farther-hits=[["+long_hits+"]]}} {{furthest-damage=[["+extreme_damage+"]]}} {{furthest-hits=[["+extreme_hits+"]]}}"+close_crits + modify_jamming(jamming, knife_hits, close_hits, long_hits, extreme_hits);
+					
+					let open_fire_move_long = "&{template:open-fire} {{range=Long}} {{roll="+roll_temp+"}} {{current-damage=[["+long_damage+"]]}} {{current-hits=[["+long_hits+"]]}} {{closer-damage=[["+close_damage+"]]}} {{closer-hits=[["+close_hits+"]]}} {{farther-damage=[["+extreme_damage+"]]}} {{farther-hits=[["+extreme_hits+"]]}} {{furthest-damage=[[0]]}} {{furthest-hits=[[0]]}} "+long_crits + modify_jamming(jamming, close_hits, long_hits, extreme_hits, 0);
+					
+					let open_fire_move_extreme =  "&{template:open-fire} {{range=Extreme}} {{roll="+roll_temp+"}} {{current-damage=[["+extreme_damage+"]]}} {{current-hits=[["+extreme_hits+"]]}} {{closer-damage=[["+long_damage+"]]}} {{closer-hits=[["+long_hits+"]]}} {{farther-damage=[[0]]}} {{farther-hits=[[0]]}} {{furthest-damage=[[0]]}} {{furthest-hits=[[0]]}}"+extreme_crits + modify_jamming(jamming, long_hits, extreme_hits, 0, 0);
+					
+					
+					open_fire_move_knife += knife_crits.replace(/current-crits-roll/g, "closer-crits-roll") + close_crits.replace(/current-crits-roll/g, "farther-crits-roll") + long_crits.replace(/current-crits-roll/g, "furthest-crits-roll");
+					
+					open_fire_move_close += knife_crits.replace(/current-crits-roll/g, "closer-crits-roll") + long_crits.replace(/current-crits-roll/g, "farther-crits-roll") + extreme_crits.replace(/current-crits-roll/g, "furthest-crits-roll");
+					
+					open_fire_move_long += close_crits.replace(/current-crits-roll/g, "closer-crits-roll") + extreme_crits.replace(/current-crits-roll/g, "farther-crits-roll");
+				
+					open_fire_move_extreme +=  long_crits.replace(/current-crits-roll/g, "closer-crits-roll");
+					
+					var obj = {};
+					obj["repeating_weapon-cards_"+id+"_open-fire-move-knife"] = open_fire_move_knife;
+					obj["repeating_weapon-cards_"+id+"_open-fire-move-close"] = open_fire_move_close;
+					obj["repeating_weapon-cards_"+id+"_open-fire-move-long"] = open_fire_move_long;
+					obj["repeating_weapon-cards_"+id+"_open-fire-move-extreme"] = open_fire_move_extreme;
+					//console.log(obj);
+					setAttrs(obj);
+				});
 			}
 		});
+	});
+	
+	on("sheet:opened", function() {
+		
 	});
 	
 	//==== functions
