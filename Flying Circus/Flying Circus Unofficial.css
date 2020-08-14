@@ -91,8 +91,9 @@
 
 /* engine-cards styling */
 
-.sheet-engine-card {
-	
+.sheet-flexrow.sheet-engine-inputs input[type="text"] {
+	width: 5em;
+	text-align: center;
 }
 
 /* stress styling */
@@ -155,11 +156,6 @@ div.sheet-flexrow.sheet-experience {
 	text-align: center;
 }
 
-.sheet-stats span {
-	font-size: 1.2em;
-	text-align: center;
-}
-
 .sheet-stats button[type="roll"] {
 	background-image: none;
 	background-color: white;
@@ -170,6 +166,8 @@ div.sheet-flexrow.sheet-experience {
 	text-shadow: none;
 	font-family: 'Balthazar', serif;
 	color: black;
+	font-size: 1.2em;
+	text-align: center;
 }
 
 .sheet-stats button[type="roll"]:before {
@@ -393,6 +391,38 @@ div.sheet-flexcol.sheet-vices {
 	padding-left: 1ex;
 }
 
+.sheet-altitude {
+	margin-bottom: 1ex;
+	border: 1px solid black;
+	padding: 1ex;
+}
+
+.sheet-altitude select {
+	width: 5em;
+	display: inline-block;
+	font-size: 1.5em;
+	height: 1.7em;
+}
+
+.sheet-altitude select option {
+	display: inline-block;
+}
+
+.sheet-altitude .sheet-altitude-label {
+	font-size: 1.3em;
+}
+
+.sheet-altitude select:focus option::first-letter{
+	color: red;
+}
+
+
+.sheet-plane-health .sheet-toughness input[type="text"], 
+.sheet-plane-health .sheet-strain input[type="text"] {
+	width: 3em;
+	text-align: center;
+}
+
 /* moves */
 .sheet-game-moves-container .sheet-game-moves-container {
 	display: none;
@@ -441,6 +471,66 @@ div.sheet-flexcol.sheet-vices {
 	padding-right: 1ex;
 }
 
+.sheet-dogfight.sheet-game-moves {
+	border-bottom: 2px dotted gray;
+	padding: 1ex;
+	margin: 1ex;
+	font-family: 'Balthazar', serif;
+	font-size: 1.3em;
+}
+
+.sheet-primary-target.sheet-handling input[type="text"] {
+	width: 2em;
+	font-size: 1.3em;
+	text-align: center;
+}
+
+.sheet-calculated-fields {
+	border: 1px solid black;
+	padding-left: 1em;
+	padding-bottom: 1em;
+	margin-bottom: 1em;
+	flex-grow: 0;
+}
+
+.sheet-calculated-fields .sheet-auto-calc {
+	font-size: 1.5em;	
+}
+
+.sheet-turn-bleed.sheet-value {
+	padding: 0.6ex;
+	border: 3px inset;
+	border-radius: 15%;
+}
+
+.sheet-g-force input[type="text"], 
+.sheet-req-base-speed-spend input[type="text"]
+{
+	width: 2em;
+}
+
+.sheet-agility span.sheet-auto-calc, 
+.sheet-speed-factor span.sheet-speed-factor, 
+.sheet-g-force input[type="text"], 
+.sheet-req-base-speed-spend input[type="text"]
+ {
+	font-size: 1.1em;
+	padding: 0.6ex;
+	text-align: center;
+	background-color: transparent;
+	border: 3px inset;
+	border-radius: 15%;
+}
+
+.sheet-calculated-fields .sheet-move-label:after {
+	content: ":";
+}
+
+.sheet-dogfight .sheet-buttons button[type="roll"] {
+	background-color: lightgray;
+	padding: 0.25em;
+}
+
 /* square box styling */
 .sheet-square-box {
 	width: 3em;
@@ -468,6 +558,13 @@ div.sheet-flexcol.sheet-vices {
 }
 
 /*air-stats indicator */
+.sheet-flexcol.sheet-middle {
+	flex-basis: 20%;
+}
+
+.sheet-flexrow.sheet-variable-stats {
+	flex-basis: 20%;
+}
 .sheet-variable-stats .sheet-flexcol div {
 	border-right: 0px;
 }
@@ -508,8 +605,17 @@ div.sheet-flexcol.sheet-vices {
 	border-right: 1px solid gray;
 }
 .sheet-variable-stats .sheet-flexcol.sheet-labels, 
-.sheet-variable-stats .sheet-flexcol.sheet-speed {
+.sheet-variable-stats .sheet-flexcol.sheet-weight {
 	border-right: 0px;
+}
+
+.sheet-weight .sheet-radio {
+	padding: 1.3ex;
+	padding-left: 1.5em;
+}
+
+.sheet-weight input[type="radio"] {
+	
 }
 
 .sheet-air-stats.sheet-indicator {
@@ -574,6 +680,29 @@ div.sheet-flexcol.sheet-vices {
 	left: 0.8em;
 }
 
+.sheet-middle .sheet-plate {
+	width: 6em;
+	background-color: darkgray;
+}
+
+.sheet-flexcol.sheet-vital-parts, 
+.sheet-flexcol.sheet-armour,
+.sheet-flexcol.sheet-ordinance {
+	padding: 1ex;
+	border: 1px solid black;
+	border-radius: 5%;
+	margin-bottom: 1ex;
+	width: 20em;
+}
+
+.sheet-flexcol.sheet-notes {
+	width: 33em;
+}
+
+.sheet-notes textarea {
+	width: 32em;
+}
+
 .sheet-air-stats .sheet-visibility input,
 .sheet-air-stats .sheet-visibility .sheet-label,
 .sheet-air-stats .sheet-energy-loss input {
@@ -631,11 +760,30 @@ div.sheet-flexcol.sheet-vices {
 	left: 3em;
 }
 
+.sheet-air-speed.sheet-indicator {
+	border: 1px solid black;
+	padding: 1ex;
+	border-radius: 4%;
+}
+
+
+.sheet-flexcol.sheet-right-side {
+	flex-basis: 20%;
+}
+
+.sheet-flexrow.sheet-dashboard {
+	border: 1px solid black;
+	border-radius: 5%;
+	padding-top: 2.5em;
+	padding-bottom: 1em;
+}
+
 /*roll templates*/
 .sheet-rolltemplate-contact div.sheet-template-container,
 .sheet-rolltemplate-simple-roll div.sheet-template-container, 
 .sheet-rolltemplate-collision  div.sheet-template-container, 
-.sheet-rolltemplate-open-fire div.sheet-template-container {
+.sheet-rolltemplate-open-fire div.sheet-template-container, 
+.sheet-rolltemplate-dogfight div.sheet-template-container {
 	border: 1px solid;
 	padding: 1ex 1ex 1ex 1ex;
 }
@@ -643,7 +791,8 @@ div.sheet-flexcol.sheet-vices {
 .sheet-rolltemplate-contact div.sheet-template-header,
 .sheet-rolltemplate-simple-roll div.sheet-template-header,
 .sheet-rolltemplate-collision  div.sheet-template-header,
-.sheet-rolltemplate-open-fire  div.sheet-template-header {
+.sheet-rolltemplate-open-fire  div.sheet-template-header,
+.sheet-rolltemplate-dogfight div.sheet-template-header  {
 	border-bottom: 1px solid red;
 	margin: 0ex 1ex 1ex 0ex;
 	font-weight: bold;

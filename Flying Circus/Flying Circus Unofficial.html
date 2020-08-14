@@ -136,7 +136,7 @@
 							*If a plane is forced to turn*, they count as slower regardless of speed.}}">Chase!</button>
 						</li>
 						<li>
-							<button type="roll">Dogfight - Pursue Them, Make an Attack</button>
+							<button type="roll" value="&{template:dogfight} {{dftype=Pursue Them, Make an Attack}} {{rnorm=[[2d10+@{character-hard} + (?{Speed factor of other plane?|0})]]}}">Dogfight - Pursue Them, Make an Attack</button>
 						</li>
 						<li>
 							<button type="roll">Dogfight - Escape a Bad Spot, Bait Them, Defend</button>
@@ -225,7 +225,6 @@
 						</li>
 					</ul>
 				</div>
-				
 				<div class="flexcol going-down game-moves">
 					<span data-i18n="going-down" class="move-title">Going Down</span>
 					<ul>
@@ -237,6 +236,58 @@
 						</li>
 					</ul>
 				</div>
+			</div>
+			
+		</div>
+		<div class="game-moves-container">
+			<div class="game-moves flexcol dogfight ">
+				<span data-i18n="dogfight" class="move-title">Dogfight!</span>
+				
+				<div class="primary-target handling">
+					<span class="move-label">Primary Target's Handling</span>
+					<input type="text" name="attr_primary-target-handling" class="dogfight" />
+				</div>
+				
+				<!--div class="turn-commit">
+					<span class="move-label">Commit to the Turn</span>
+					<input type="number" name="attr_commit-speed" class="turn-commit"/>
+				</div-->
+				<div class="calculated-fields">
+					<span class="auto-calc"> Auto-Calculated Fields</span>
+					<div class="turn-bleed">
+						<span class="move-label">Turn Bleed</span>
+						<span class="turn-bleed value" name="attr_turn-bleed"></span>
+					</div>
+					<div class="speed-factor">
+						<span class="move-label" title="(air-speed in the thousands)">Current Speed Factor</span>
+						<span class="speed-factor" name="attr_air-speed-hundreds" ></span>
+					</div>
+					<div class="req-base-speed-spend">
+						<span class="move-label" title="You need to spend at least this much speed when dog fighting. It is your Turn Bleed + Speed Factor." >Required base speed spend to dogfight</span>
+						<input type="text" disabled="true" name="attr_base-speed-spend" value="@{turn-bleed}+@{air-speed-hundreds}" />
+					</div>
+					<!--div>
+						<span>Total bonus from <em>Commit to the Turn</em></span>
+						<input type="text" disabled="true" name="attr_cttt-bonus" value="floor(@{commit-speed}/@{turn-bleed})" />
+					</div-->
+					<div class="g-force">
+						<span class="move-label">Accrued G-Force</span>
+						<input type="text" disabled="true" name="attr_accrued-g-force" value="@{air-speed-hundreds}" />
+					</div>
+					<div class="agility">
+						<span class="label" title="Calculated from the difference between your handling and the primary target's handling">Agility</span>
+						<span class="auto-calc" name="attr_agility"></span>
+						
+					</div>
+				</div>
+				<div class="flexrow dogfight buttons">
+					<button type="roll" title="Roll +Hard" value="&{template:do2d10} {{rollname=Dogfight}} {{resnorm=[[2d10+(@{character-hard}[Hard])]]}} {{rtype=[[0]]}}">Pursuit or Attack</button>
+					<button type="roll" title="Roll +Keen" value="&{template:do2d10} {{rollname=Dogfight}} {{resnorm=[[2d10+(@{character-keen}[Keen])]]}}  {{rtype=[[0]]}}">Escape, Bait, or Defend</button>
+					<button type="roll" title="Roll +Daring" value="&{template:do2d10} {{rollname=Dogfight}} {{resnorm=[[2d10+(@{character-daring [Daring]})]]}}  {{rtype=[[0]]}}">Turn the Tables</button>
+				</div>
+				<input type="hidden" name="attr_dogfight_hard" />
+				<input type="hidden" name="attr_dogfight_keen" />
+				<input type="hidden" name="attr_dogfight_daring" />
 			</div>
 		</div>
 	</div>
@@ -338,33 +389,33 @@
 				<div class="flexcol left-side">
 					<div class="altitude indicator">
 						<div>
-							<span> Altitude Thousands</span>
+							<span class="altitude-label"> Altitude Thousands</span>
 							<select name="attr_altitude-thousands"> 
-								<option value="0"><span class="big-digit">0</span><span class="small-digit">000</span></option>
-								<option value="1"><span class="big-digit">1</span><span class="small-digit">000</span></option>
-								<option value="2"><span class="big-digit">2</span><span class="small-digit">000</span></option>
-								<option value="3"><span class="big-digit">3</span><span class="small-digit">000</span></option>
-								<option value="4"><span class="big-digit">4</span><span class="small-digit">000</span></option>
-								<option value="5"><span class="big-digit">5</span><span class="small-digit">000</span></option>
-								<option value="6"><span class="big-digit">6</span><span class="small-digit">000</span></option>
-								<option value="7"><span class="big-digit">7</span><span class="small-digit">000</span></option>
-								<option value="8"><span class="big-digit">8</span><span class="small-digit">000</span></option>
-								<option value="9"><span class="big-digit">9</span><span class="small-digit">000</span></option>
+								<option value="0">(0)000</option>
+								<option value="1">&#x2474;000</option>
+								<option value="2">&#x2475;000</option>
+								<option value="3">&#x2476;000</option>
+								<option value="4">&#x2477;000</option>
+								<option value="5">&#x2478;000</option>
+								<option value="6">&#x2479;000</option>
+								<option value="7">&#x247a;000</option>
+								<option value="8">&#x247b;000</option>
+								<option value="9">&#x247c;000</option>
 							</select>
 						</div>
 						<div>
-							<span>Altitude Hundreds</span>
+							<span class="altitude-label">Altitude Hundreds</span>
 							<select name="attr_altitude-hundreds"> 
-								<option value="0"><span class="big-digit">0</span><span class="small-digit">00</span></option>
-								<option value="1"><span class="big-digit">1</span><span class="small-digit">00</span></option>
-								<option value="2"><span class="big-digit">2</span><span class="small-digit">00</span></option>
-								<option value="3"><span class="big-digit">3</span><span class="small-digit">00</span></option>
-								<option value="4"><span class="big-digit">4</span><span class="small-digit">00</span></option>
-								<option value="5"><span class="big-digit">5</span><span class="small-digit">00</span></option>
-								<option value="6"><span class="big-digit">6</span><span class="small-digit">00</span></option>
-								<option value="7"><span class="big-digit">7</span><span class="small-digit">00</span></option>
-								<option value="8"><span class="big-digit">8</span><span class="small-digit">00</span></option>
-								<option value="9"><span class="big-digit">9</span><span class="small-digit">00</span></option>
+								<option value="0">(0)00</option>
+								<option value="1">&#x2474;00</option>
+								<option value="2">&#x2475;00</option>
+								<option value="3">&#x2476;00</option>
+								<option value="4">&#x2477;00</option>
+								<option value="5">&#x2478;00</option>
+								<option value="6">&#x2479;00</option>
+								<option value="7">&#x247a;00</option>
+								<option value="8">&#x247b;00</option>
+								<option value="9">&#x247c;00</option>
 							</select>
 						</div>
 						
@@ -407,19 +458,19 @@
 						</div>
 						<div class="plane-health indicator flexcol">
 							<div class="toughness flexrow">
-								<div class="current-toughness">
+								<div class="toughness current">
 									<input type="text" name="attr_toughness" />
 								</div>
-								<div class="max-toughness">
+								<div class="toughness max">
 									<input type="text" name="attr_toughness_max" />
 								</div>
 							</div>
 							<span>Toughness</span>
 							<div class="strain flexrow">
-								<div class="current-strain">
+								<div class="strain current">
 									<input type="text" name="attr_strain" />
 								</div>
-								<div class="max-strain">
+								<div class="strain max">
 									<input type="text" name="attr_strain_max" />
 								</div>
 							</div>
@@ -550,6 +601,14 @@
 								-
 							</div>
 						</div>
+						<div class="flexcol weight">
+							<div class="flexcol header">Weight</div>
+							<div class="flexcol radio"><input type="radio" name="attr_weight-marker" value="0"/></div>
+							<div class="flexcol radio"><input type="radio" name="attr_weight-marker" value="1"/></div>
+							<div class="flexcol radio"><input type="radio" name="attr_weight-marker" value="2"/></div>
+							<div class="flexcol radio"><input type="radio" name="attr_weight-marker" value="4"/></div>
+							<div class="flexcol radio"><input type="radio" name="attr_weight-marker" value="8"/></div>
+						</div>
 					</div>
 					<div class="plate">Variable Stats</div>
 					<div class="fuel square-box">
@@ -566,7 +625,7 @@
 							</div>
 						</fieldset>
 					</div>
-					<div class="flexcol">
+					<div class="flexcol armour">
 						<div class="armour header">
 							Armour
 						</div>
@@ -586,35 +645,42 @@
 					</div>
 					
 					<div class="flexcol notes">
-						<textarea name="attr_notes" class="notes"></textarea>
+						<span>Notes</span>
+						<textarea name="attr_notes"></textarea>
 					</div>
 				</div>
 				<div class="flexcol right-side">
 					<div class="air-speed indicator">
-						<select name="attr_air-speed-tens"> 
-							<option value="0"><span class="big-digit">0</span><span class="small-digit">0</span></option>
-							<option value="1"><span class="big-digit">1</span><span class="small-digit">0</span></option>
-							<option value="2"><span class="big-digit">2</span><span class="small-digit">0</span></option>
-							<option value="3"><span class="big-digit">3</span><span class="small-digit">0</span></option>
-							<option value="4"><span class="big-digit">4</span><span class="small-digit">0</span></option>
-							<option value="5"><span class="big-digit">5</span><span class="small-digit">0</span></option>
-							<option value="6"><span class="big-digit">6</span><span class="small-digit">0</span></option>
-							<option value="7"><span class="big-digit">7</span><span class="small-digit">0</span></option>
-							<option value="8"><span class="big-digit">8</span><span class="small-digit">0</span></option>
-							<option value="9"><span class="big-digit">9</span><span class="small-digit">0</span></option>
-						</select>
-						<select name="attr_air-speed-hundreds"> 
-							<option value="0"><span class="big-digit">0</span><span class="small-digit">00</span></option>
-							<option value="1"><span class="big-digit">1</span><span class="small-digit">00</span></option>
-							<option value="2"><span class="big-digit">2</span><span class="small-digit">00</span></option>
-							<option value="3"><span class="big-digit">3</span><span class="small-digit">00</span></option>
-							<option value="4"><span class="big-digit">4</span><span class="small-digit">00</span></option>
-							<option value="5"><span class="big-digit">5</span><span class="small-digit">00</span></option>
-							<option value="6"><span class="big-digit">6</span><span class="small-digit">00</span></option>
-							<option value="7"><span class="big-digit">7</span><span class="small-digit">00</span></option>
-							<option value="8"><span class="big-digit">8</span><span class="small-digit">00</span></option>
-							<option value="9"><span class="big-digit">9</span><span class="small-digit">00</span></option>
-						</select>
+						<div class="hundreds">
+							<span class="air-speed-label">Air-Speed Hundreds</span>
+							<select name="attr_air-speed-hundreds"> 
+								<option value="0">000</option>
+								<option value="1">100</option>
+								<option value="2">200</option>
+								<option value="3">300</option>
+								<option value="4">400</option>
+								<option value="5">500</option>
+								<option value="6">600</option>
+								<option value="7">700</option>
+								<option value="8">800</option>
+								<option value="9">900</option>
+							</select>
+						</div>
+						<div class="tens">
+							<span class="air-speed-label">Air-Speed Tens</span>
+							<select name="attr_air-speed-tens"> 
+								<option value="0">00</option>
+								<option value="1">10</option>
+								<option value="2">20</option>
+								<option value="3">30</option>
+								<option value="4">40</option>
+								<option value="5">50</option>
+								<option value="6">60</option>
+								<option value="7">70</option>
+								<option value="8">80</option>
+								<option value="9">90</option>
+							</select>
+						</div>
 						<div class="plate">Air Speed</div>
 						<div class="air-speed-stats square-box">
 							<input type="text" name="attr_dropoff" />
@@ -645,13 +711,13 @@
 					<div class="engine-card">
 						<div class="flexrow engine-inputs">
 							<div class="reliability">
-								<input type="text" name="attr_reliability" placeholder="Reliability" />
+								<input type="text" name="attr_reliability" placeholder="Reliability" title="Reliability" />
 							</div>
 							<div class="ideal-altitude">
-								<input type="text" name="attr_ideal-altitude" placeholder="ideal altitude"/>
+								<input type="text" name="attr_ideal-altitude" placeholder="Ideal Altitude" title="Ideal Altitude"/>
 							</div>
 							<div class="overspeed">
-								<input type="text" name="attr_overspeed" placeholder="overspeed"/>
+								<input type="text" name="attr_overspeed" placeholder="Overspeed" title="Overspeed"/>
 							</div>
 						</div>
 						<div class="engine-calculated-fields">
@@ -998,6 +1064,18 @@
 
 </rolltemplate>
 
+<rolltemplate class="sheet-rolltemplate-dogfight">
+	<div class="sheet-template-container">
+		<div class="sheet-template-header">Dogfight!</div>
+		<div class="sheet-template-body"> 	
+			 <em>{{dftype}}</em>
+			<div class="sheet-roll-output">
+				<span class="sheet-roll-label">Roll:</span><span class="sheet-roll-out">{{rnorm}}</span>
+			</div>
+		</div>
+	</div>
+</rolltemplate>
+
 <script type="text/worker">
 	const attribs = ['hard', 'keen', 'calm', 'daring', 'wild'];
 	
@@ -1206,6 +1284,32 @@
 					setAttrs(obj);
 				});
 			}
+		});
+	});
+	
+	on("change:primary-target-handling", function() {
+		getAttrs(['primary-target-handling', 'full-load-handling'], function(v) {
+			var opp_handling = parseInt(v['primary-target-handling']);
+			var self_handling = parseInt(v['full-load-handling']);
+			var agility = 0;
+			
+			if (opp_handling > self_handling)
+			{
+				agility = -1;
+				if ((opp_handling-self_handling) > 9) {
+					agility -= ((opp_handling-self_handling)/10);
+				}
+			}
+			else if (self_handling > opp_handling) 
+			{
+				agility = 1;
+				if ((self_handling-opp_handling) > 9) 
+				{
+					agility += ((self_handling-opp_handling)/10);
+				}
+			}
+			agility = Math.floor(agility);
+			setAttrs({'agility': agility});
 		});
 	});
 	
